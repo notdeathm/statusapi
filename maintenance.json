@@ -1,0 +1,25 @@
+{
+  "services": {
+    "notdeath-website": {
+      "isDown": false,
+      "reason": null,
+      "startTime": null,
+      "estimatedDowntime": null,
+      "manuallyTriggered": false
+    },
+    "github-notdeath-repo": {
+      "isDown": false,
+      "reason": null,
+      "startTime": null,
+      "estimatedDowntime": null,
+      "manuallyTriggered": false
+    },
+    "status-api": {
+      "isDown": false,
+      "reason": null,
+      "startTime": null,
+      "estimatedDowntime": null,
+      "manuallyTriggered": false
+    }
+  }
+}

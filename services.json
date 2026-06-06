@@ -1,0 +1,31 @@
+{
+  "services": [
+    {
+      "id": "notdeath-website",
+      "name": "NotDeath Website",
+      "description": "Personal portfolio website",
+      "url": "https://notdeath.vercel.app",
+      "type": "http",
+      "checkInterval": 300,
+      "timeout": 5000
+    },
+    {
+      "id": "github-notdeath-repo",
+      "name": "GitHub Repository",
+      "description": "Main notdeath repository",
+      "url": "https://github.com/notdeathm/notdeath",
+      "type": "github",
+      "owner": "notdeathm",
+      "repo": "notdeath"
+    },
+    {
+      "id": "status-api",
+      "name": "Status API",
+      "description": "This status page website",
+      "url": "https://status-api.habibberrada75.workers.dev",
+      "type": "http",
+      "checkInterval": 300,
+      "timeout": 5000
+    }
+  ]
+}

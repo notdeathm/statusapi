@@ -1,0 +1,36 @@
+{
+  "notdeath-website": [
+    {
+      "serviceId": "notdeath-website",
+      "status": "up",
+      "statusCode": 200,
+      "responseTime": 251,
+      "timestamp": "2026-06-06T03:26:45.470Z",
+      "lastChecked": "2026-06-06T03:26:45.470Z",
+      "uptime": 100
+    }
+  ],
+  "github-notdeath-repo": [
+    {
+      "serviceId": "github-notdeath-repo",
+      "status": "down",
+      "statusCode": 401,
+      "responseTime": 542,
+      "timestamp": "2026-06-06T03:26:46.013Z",
+      "lastChecked": "2026-06-06T03:26:46.013Z",
+      "uptime": 0,
+      "error": "GitHub API returned 401"
+    }
+  ],
+  "status-api": [
+    {
+      "serviceId": "status-api",
+      "status": "up",
+      "statusCode": 200,
+      "responseTime": 191,
+      "timestamp": "2026-06-06T03:26:46.204Z",
+      "lastChecked": "2026-06-06T03:26:46.204Z",
+      "uptime": 100
+    }
+  ]
+}

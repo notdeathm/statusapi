@@ -1,0 +1,72 @@
+{
+  "success": true,
+  "timestamp": "2026-06-06T03:26:45.219Z",
+  "services": [
+    {
+      "service": {
+        "id": "notdeath-website",
+        "name": "NotDeath Website",
+        "description": "Personal portfolio website",
+        "url": "https://notdeath.vercel.app",
+        "type": "http",
+        "checkInterval": 300,
+        "timeout": 5000
+      },
+      "currentStatus": {
+        "serviceId": "notdeath-website",
+        "status": "up",
+        "statusCode": 200,
+        "responseTime": 251,
+        "timestamp": "2026-06-06T03:26:45.470Z",
+        "lastChecked": "2026-06-06T03:26:45.470Z",
+        "uptime": 100
+      },
+      "uptime30d": 100
+    },
+    {
+      "service": {
+        "id": "github-notdeath-repo",
+        "name": "GitHub Repository",
+        "description": "Main notdeath repository",
+        "url": "https://github.com/notdeathm/notdeath",
+        "type": "github",
+        "owner": "notdeathm",
+        "repo": "notdeath"
+      },
+      "currentStatus": {
+        "serviceId": "github-notdeath-repo",
+        "status": "down",
+        "statusCode": 401,
+        "responseTime": 542,
+        "timestamp": "2026-06-06T03:26:46.013Z",
+        "lastChecked": "2026-06-06T03:26:46.013Z",
+        "uptime": 0,
+        "error": "GitHub API returned 401"
+      },
+      "uptime30d": 0
+    },
+    {
+      "service": {
+        "id": "status-api",
+        "name": "Status API",
+        "description": "This status page website",
+        "url": "https://status-api.habibberrada75.workers.dev",
+        "type": "http",
+        "checkInterval": 300,
+        "timeout": 5000
+      },
+      "currentStatus": {
+        "serviceId": "status-api",
+        "status": "up",
+        "statusCode": 200,
+        "responseTime": 191,
+        "timestamp": "2026-06-06T03:26:46.204Z",
+        "lastChecked": "2026-06-06T03:26:46.204Z",
+        "uptime": 100
+      },
+      "uptime30d": 100
+    }
+  ],
+  "totalServices": 3,
+  "allOperational": false
+}
