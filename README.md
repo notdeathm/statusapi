@@ -72,3 +72,4 @@ console.log(data.allOperational ? "All systems operational!" : "We have issues."
 ## 📄 License
 
 This project is open-source and available under the [MIT License](LICENSE).
+Made with ❤️ From Death
