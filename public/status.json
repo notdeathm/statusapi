@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-06-06T03:26:45.219Z",
+  "timestamp": "2026-06-06T07:23:23.481Z",
   "services": [
     {
       "service": {
@@ -16,9 +16,9 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 251,
-        "timestamp": "2026-06-06T03:26:45.470Z",
-        "lastChecked": "2026-06-06T03:26:45.470Z",
+        "responseTime": 201,
+        "timestamp": "2026-06-06T07:23:23.682Z",
+        "lastChecked": "2026-06-06T07:23:23.682Z",
         "uptime": 100
       },
       "uptime30d": 100
@@ -35,15 +35,14 @@
       },
       "currentStatus": {
         "serviceId": "github-notdeath-repo",
-        "status": "down",
-        "statusCode": 401,
-        "responseTime": 542,
-        "timestamp": "2026-06-06T03:26:46.013Z",
-        "lastChecked": "2026-06-06T03:26:46.013Z",
-        "uptime": 0,
-        "error": "GitHub API returned 401"
+        "status": "up",
+        "statusCode": 200,
+        "responseTime": 226,
+        "timestamp": "2026-06-06T07:23:23.913Z",
+        "lastChecked": "2026-06-06T07:23:23.913Z",
+        "uptime": 100
       },
-      "uptime30d": 0
+      "uptime30d": 50
     },
     {
       "service": {
@@ -59,14 +58,14 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 191,
-        "timestamp": "2026-06-06T03:26:46.204Z",
-        "lastChecked": "2026-06-06T03:26:46.204Z",
+        "responseTime": 554,
+        "timestamp": "2026-06-06T07:23:24.467Z",
+        "lastChecked": "2026-06-06T07:23:24.467Z",
         "uptime": 100
       },
       "uptime30d": 100
     }
   ],
   "totalServices": 3,
-  "allOperational": false
+  "allOperational": true
 }
