@@ -1,12 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  basePath: "/statusapi",
+  // 1. Trigger a static HTML export for GitHub Pages
+  output: 'export',
+
+  // 2. Set the base path to match your repository name
+  basePath: '/statusapi',
+
+  // 3. Disable image optimization since GitHub Pages doesn't run a Node server to optimize images on the fly
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
 };
 
 export default nextConfig;
