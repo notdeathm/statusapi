@@ -1,10 +1,14 @@
 {
   "success": true,
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   "timestamp": "2026-06-09T11:50:36.340Z",
 =======
   "timestamp": "2026-06-09T12:55:06.165Z",
 >>>>>>> Stashed changes
+=======
+  "timestamp": "2026-06-09T16:47:23.151Z",
+>>>>>>> ba98d1cbe4585cb2d73c854ff1bae39563191d02
   "services": [
     {
       "service": {
@@ -20,6 +24,7 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         "responseTime": 185,
         "timestamp": "2026-06-09T11:50:36.526Z",
@@ -29,6 +34,11 @@
         "timestamp": "2026-06-09T12:55:06.514Z",
         "lastChecked": "2026-06-09T12:55:06.514Z",
 >>>>>>> Stashed changes
+=======
+        "responseTime": 163,
+        "timestamp": "2026-06-09T16:47:23.314Z",
+        "lastChecked": "2026-06-09T16:47:23.314Z",
+>>>>>>> ba98d1cbe4585cb2d73c854ff1bae39563191d02
         "uptime": 100
       },
       "uptime30d": 50
@@ -48,9 +58,9 @@
 <<<<<<< Updated upstream
         "status": "up",
         "statusCode": 200,
-        "responseTime": 292,
-        "timestamp": "2026-06-09T11:50:36.823Z",
-        "lastChecked": "2026-06-09T11:50:36.823Z",
+        "responseTime": 176,
+        "timestamp": "2026-06-09T16:47:23.495Z",
+        "lastChecked": "2026-06-09T16:47:23.495Z",
         "uptime": 100
 =======
         "status": "down",
@@ -61,7 +71,7 @@
         "uptime": 0
 >>>>>>> Stashed changes
       },
-      "uptime30d": 97
+      "uptime30d": 98
     },
     {
       "service": {
@@ -77,6 +87,7 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         "responseTime": 507,
         "timestamp": "2026-06-09T11:50:37.330Z",
@@ -86,6 +97,11 @@
         "timestamp": "2026-06-09T12:55:08.160Z",
         "lastChecked": "2026-06-09T12:55:08.160Z",
 >>>>>>> Stashed changes
+=======
+        "responseTime": 850,
+        "timestamp": "2026-06-09T16:47:24.345Z",
+        "lastChecked": "2026-06-09T16:47:24.345Z",
+>>>>>>> ba98d1cbe4585cb2d73c854ff1bae39563191d02
         "uptime": 100
       },
       "uptime30d": 50
