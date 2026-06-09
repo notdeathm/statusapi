@@ -1,7 +1,10 @@
 {
-  "notdeath-website": [
+  "success": true,
+  "timestamp": "2026-06-09T12:55:06.165Z",
+  "services": [
     {
       "serviceId": "notdeath-website",
+<<<<<<< Updated upstream
       "status": "up",
       "statusCode": 200,
       "responseTime": 251,
@@ -1057,6 +1060,68 @@
       "timestamp": "2026-06-09T11:50:37.330Z",
       "lastChecked": "2026-06-09T11:50:37.330Z",
       "uptime": 100
+=======
+      "serviceName": "NotDeath Website",
+      "overallUptime30d": 50,
+      "history": [
+        {
+          "date": "2026-06-08",
+          "status": "down",
+          "responseTime": 255,
+          "uptime": 0,
+          "incidents": 1
+        },
+        {
+          "date": "2026-06-09",
+          "status": "up",
+          "responseTime": 336,
+          "uptime": 100,
+          "incidents": 0
+        }
+      ]
+    },
+    {
+      "serviceId": "github-notdeath-repo",
+      "serviceName": "GitHub Repository",
+      "overallUptime30d": 0,
+      "history": [
+        {
+          "date": "2026-06-08",
+          "status": "down",
+          "responseTime": 56,
+          "uptime": 0,
+          "incidents": 1
+        },
+        {
+          "date": "2026-06-09",
+          "status": "down",
+          "responseTime": 561,
+          "uptime": 0,
+          "incidents": 1
+        }
+      ]
+    },
+    {
+      "serviceId": "status-api",
+      "serviceName": "Status API",
+      "overallUptime30d": 50,
+      "history": [
+        {
+          "date": "2026-06-08",
+          "status": "down",
+          "responseTime": 288,
+          "uptime": 0,
+          "incidents": 1
+        },
+        {
+          "date": "2026-06-09",
+          "status": "up",
+          "responseTime": 1064,
+          "uptime": 100,
+          "incidents": 0
+        }
+      ]
+>>>>>>> Stashed changes
     }
   ]
 }

@@ -2,183 +2,273 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronUp, Terminal, Globe, Code, Github, ExternalLink } from "lucide-react";
+import Nav from "@/components/Nav";
 
-export default function ApiDocs() {
-  const [openSection, setOpenSection] = useState<string | null>("status");
+const BASE_URL = "https://notdeathm.github.io/statusapi";
 
-  const toggleSection = (id: string) => {
-    setOpenSection(openSection === id ? null : id);
-  };
+type TabKey = "curl" | "wget" | "js" | "python";
 
-  const sections = [
-    {
-      id: "status",
-      title: "Current Status API",
-      endpoint: "/status.json",
-      description: "Get the real-time status of all monitored services.",
-      commands: {
-        curl: "curl -s https://notdeathm.github.io/statusapi/status.json | jq .",
-        wget: "wget -qO- https://notdeathm.github.io/statusapi/status.json",
-      },
-      response: {
-        success: true,
-        timestamp: "2026-06-06T12:00:00Z",
-        services: [
-          {
-            service: { id: "web-app", name: "Main Website", url: "..." },
-            currentStatus: { status: "up", responseTime: 120 },
-            uptime30d: 99.9,
-          },
-        ],
-        allOperational: true,
-      },
-    },
-    {
-      id: "history",
-      title: "Historical Data API",
-      endpoint: "/history.json",
-      description:
-        "Access the last 1000 status checks for detailed uptime analysis.",
-      commands: {
-        curl: "curl -s https://notdeathm.github.io/statusapi/history.json | jq .",
-        wget: "wget -qO- https://notdeathm.github.io/statusapi/history.json",
-      },
-      response: {
-        "service-id": [
-          { status: "up", responseTime: 115, timestamp: "..." },
-          { status: "up", responseTime: 122, timestamp: "..." },
-        ],
-      },
-    },
-    {
-      id: "maintenance",
-      title: "Maintenance API",
-      endpoint: "/maintenance.json",
-      description:
-        "Check for active maintenance windows or scheduled downtime.",
-      commands: {
-        curl: "curl -s https://notdeathm.github.io/statusapi/maintenance.json | jq .",
-        wget: "wget -qO- https://notdeathm.github.io/statusapi/maintenance.json",
-      },
-      response: {
-        success: true,
-        data: {
-          services: {
-            "web-app": {
-              isDown: true,
-              reason: "Upgrading servers",
-              startTime: "...",
-              estimatedDowntime: "1 hour",
-            },
-          },
-        },
-      },
-    },
-  ];
+interface EndpointProps {
+  method?: string;
+  path: string;
+  description: string;
+  tabs: { key: TabKey; label: string; code: string }[];
+  responsePreview: string;
+  note?: string;
+}
+
+function EndpointCard({
+  method = "GET",
+  path,
+  description,
+  tabs,
+  responsePreview,
+  note,
+}: EndpointProps) {
+  const [activeTab, setActiveTab] = useState<TabKey>(tabs[0].key);
+
+  const activeCode = tabs.find((t) => t.key === activeTab)?.code ?? "";
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6 sm:py-12 text-slate-300">
-      <div className="mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">API Reference</h1>
-        <p className="text-slate-400 text-base sm:text-lg">
-          Integrate our status data into your own tools using these static JSON endpoints.
-          All endpoints are publicly accessible — no API key required.
-        </p>
-        <div className="flex flex-wrap items-center gap-3 mt-6">
-          <a
-            href="https://github.com/notdeathm/statusapi"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700 text-slate-300 hover:text-white hover:border-slate-500 transition-all text-sm"
-          >
-            <Github className="w-4 h-4" />
-            View on GitHub
-            <ExternalLink className="w-3 h-3" />
-          </a>
-        </div>
+    <div className="endpoint-card">
+      <div className="endpoint-header">
+        <span className="method-badge">{method}</span>
+        <span className="endpoint-path">{path}</span>
+        <span className="endpoint-desc">{description}</span>
       </div>
 
-      <div className="space-y-4">
-        {sections.map((section) => (
-          <div
-            key={section.id}
-            className="border border-slate-700 rounded-xl overflow-hidden bg-slate-800/30"
-          >
+      <div className="endpoint-body">
+        {note && (
+          <p style={{ color: "var(--text-muted)", fontSize: 13, marginBottom: 14 }}>
+            {note}
+          </p>
+        )}
+
+        <div className="endpoint-section-title">Command</div>
+        <div className="tab-group">
+          {tabs.map((tab) => (
             <button
-              onClick={() => toggleSection(section.id)}
-              className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/30 transition-colors"
+              key={tab.key}
+              className={`tab-btn${activeTab === tab.key ? " active" : ""}`}
+              onClick={() => setActiveTab(tab.key)}
             >
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-blue-500/10 rounded-lg">
-                  <Globe className="w-5 h-5 text-blue-400" />
-                </div>
-                <div className="text-left">
-                  <h3 className="text-lg font-semibold text-white">
-                    {section.title}
-                  </h3>
-                  <code className="text-sm text-blue-400/80">
-                    {section.endpoint}
-                  </code>
-                </div>
-              </div>
-              {openSection === section.id ? <ChevronUp /> : <ChevronDown />}
+              {tab.label}
             </button>
+          ))}
+        </div>
 
-            {openSection === section.id && (
-              <div className="px-6 pb-6 pt-2 space-y-6 border-t border-slate-700/50">
-                <p className="text-slate-400">{section.description}</p>
+        <div className="code-block">{activeCode}</div>
 
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="flex items-center gap-2 text-sm font-semibold text-white mb-3">
-                      <Terminal className="w-4 h-4" /> Terminal Commands
-                    </h4>
-                    <div className="space-y-2">
-                      <div className="bg-slate-950 p-3 rounded-lg border border-slate-700">
-                        <p className="text-[10px] text-slate-500 mb-1 uppercase tracking-widest font-bold">
-                          cURL
-                        </p>
-                        <code className="text-blue-300 text-xs break-all">
-                          {section.commands.curl}
-                        </code>
-                      </div>
-                      <div className="bg-slate-950 p-3 rounded-lg border border-slate-700">
-                        <p className="text-[10px] text-slate-500 mb-1 uppercase tracking-widest font-bold">
-                          wget
-                        </p>
-                        <code className="text-blue-300 text-xs break-all">
-                          {section.commands.wget}
-                        </code>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="flex items-center gap-2 text-sm font-semibold text-white mb-3">
-                      <Code className="w-4 h-4" /> Response Preview
-                    </h4>
-                    <div className="bg-slate-950 p-4 rounded-lg border border-slate-700 overflow-x-auto">
-                      <pre className="text-slate-300 text-xs leading-relaxed">
-                        {JSON.stringify(section.response, null, 2)}
-                      </pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-12 pt-8 border-t border-slate-800">
-        <Link
-          href="/"
-          className="text-blue-400 hover:text-blue-300 font-medium flex items-center gap-2 transition-colors"
-        >
-          <span>&larr;</span> Back to Dashboard
-        </Link>
+        <div className="endpoint-section-title">Response Preview</div>
+        <pre className="code-block">{responsePreview}</pre>
       </div>
     </div>
+  );
+}
+
+export default function ApiDocsPage() {
+  return (
+    <>
+      <Nav />
+      <main>
+        <div className="container">
+          <section className="api-page-hero">
+            <Link href="/" className="back-link">
+              ← Back to Dashboard
+            </Link>
+            <h1 className="api-page-title">API Reference</h1>
+            <p className="api-page-desc">
+              Integrate status data into your own tools using these static JSON endpoints.
+              All endpoints are publicly accessible — no API key required.
+            </p>
+          </section>
+
+          {/* Current Status */}
+          <EndpointCard
+            path={`${BASE_URL}/status.json`}
+            description="Current status of all monitored services"
+            note="Returns the real-time status, response times, and 30-day uptime for each service."
+            tabs={[
+              {
+                key: "curl",
+                label: "cURL",
+                code: `curl -s ${BASE_URL}/status.json | jq .`,
+              },
+              {
+                key: "wget",
+                label: "wget",
+                code: `wget -qO- ${BASE_URL}/status.json`,
+              },
+              {
+                key: "js",
+                label: "JavaScript",
+                code: `const res = await fetch('${BASE_URL}/status.json');\nconst data = await res.json();\nconsole.log(data.allOperational ? 'All systems OK' : 'Issues detected');`,
+              },
+              {
+                key: "python",
+                label: "Python",
+                code: `import httpx\ndata = httpx.get('${BASE_URL}/status.json').json()\nprint('All OK:', data['allOperational'])`,
+              },
+            ]}
+            responsePreview={`{
+  "success": true,
+  "timestamp": "2026-06-07T01:55:50.820Z",
+  "services": [
+    {
+      "service": {
+        "id": "notdeath-website",
+        "name": "NotDeath Website",
+        "description": "Personal portfolio website",
+        "url": "https://notdeath.vercel.app",
+        "type": "http"
+      },
+      "currentStatus": {
+        "serviceId": "notdeath-website",
+        "status": "up",
+        "statusCode": 200,
+        "responseTime": 96,
+        "timestamp": "2026-06-07T01:55:50.917Z",
+        "uptime": 100
+      },
+      "uptime30d": 100
+    }
+  ],
+  "totalServices": 3,
+  "allOperational": true
+}`}
+          />
+
+          {/* History */}
+          <EndpointCard
+            path={`${BASE_URL}/history.json`}
+            description="30-day uptime history for all services"
+            note="Contains day-by-day uptime history for the last 30 days. Useful for trend analysis."
+            tabs={[
+              {
+                key: "curl",
+                label: "cURL",
+                code: `curl -s ${BASE_URL}/history.json | jq .`,
+              },
+              {
+                key: "wget",
+                label: "wget",
+                code: `wget -qO- ${BASE_URL}/history.json`,
+              },
+              {
+                key: "js",
+                label: "JavaScript",
+                code: `const res = await fetch('${BASE_URL}/history.json');\nconst data = await res.json();\ndata.services.forEach(s => console.log(s.serviceName, s.overallUptime30d + '%'));`,
+              },
+              {
+                key: "python",
+                label: "Python",
+                code: `import httpx\ndata = httpx.get('${BASE_URL}/history.json').json()\nfor svc in data['services']:\n    print(svc['serviceName'], svc['overallUptime30d'])`,
+              },
+            ]}
+            responsePreview={`{
+  "success": true,
+  "timestamp": "2026-06-07T01:55:50.820Z",
+  "services": [
+    {
+      "serviceId": "notdeath-website",
+      "serviceName": "NotDeath Website",
+      "overallUptime30d": 99.9,
+      "history": [
+        {
+          "date": "2026-06-06",
+          "status": "up",
+          "responseTime": 92,
+          "uptime": 100,
+          "incidents": 0
+        }
+      ]
+    }
+  ]
+}`}
+          />
+
+          {/* Maintenance */}
+          <EndpointCard
+            path={`${BASE_URL}/maintenance.json`}
+            description="Active maintenance windows"
+            note="Contains any active or scheduled maintenance windows. Empty object means no maintenance is scheduled."
+            tabs={[
+              {
+                key: "curl",
+                label: "cURL",
+                code: `curl -s ${BASE_URL}/maintenance.json | jq .`,
+              },
+              {
+                key: "wget",
+                label: "wget",
+                code: `wget -qO- ${BASE_URL}/maintenance.json`,
+              },
+              {
+                key: "js",
+                label: "JavaScript",
+                code: `const res = await fetch('${BASE_URL}/maintenance.json');\nconst data = await res.json();\nconst active = Object.entries(data.services)\n  .filter(([, v]) => v.isDown);\nconsole.log(active.length, 'services in maintenance');`,
+              },
+              {
+                key: "python",
+                label: "Python",
+                code: `import httpx\ndata = httpx.get('${BASE_URL}/maintenance.json').json()\nfor id, info in data['services'].items():\n    if info['isDown']:\n        print(id, '-', info['reason'])`,
+              },
+            ]}
+            responsePreview={`{
+  "services": {
+    "my-service": {
+      "isDown": true,
+      "reason": "Scheduled database migration",
+      "startTime": "2026-06-06T10:00:00Z",
+      "estimatedDowntime": "2 hours"
+    }
+  }
+}`}
+          />
+
+          {/* Quick integration example */}
+          <div className="section-card" style={{ marginBottom: 40 }}>
+            <div className="section-card-title">Quick Integration Example</div>
+            <p style={{ color: "var(--text-muted)", fontSize: 13, marginBottom: 14 }}>
+              Embed a live status indicator in your own project:
+            </p>
+            <pre className="code-block">{`// Fetch and display current status
+async function checkStatus() {
+  const res = await fetch('${BASE_URL}/status.json');
+  const data = await res.json();
+
+  const badge = document.getElementById('status-badge');
+  if (data.allOperational) {
+    badge.textContent = '✓ All Systems Operational';
+    badge.className = 'status-green';
+  } else {
+    const down = data.services.filter(s => s.currentStatus.status !== 'up');
+    badge.textContent = \`⚠ \${down.length} service(s) affected\`;
+    badge.className = 'status-red';
+  }
+}
+
+checkStatus();`}</pre>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div className="container">
+          <div className="footer-inner">
+            <span className="footer-text">
+              © {new Date().getFullYear()} Status API · Made by{" "}
+              <a href="https://notdeath.vercel.app" target="_blank" rel="noopener noreferrer">
+                NotDeath
+              </a>
+              {" · "}
+              <a href="https://github.com/notdeathm/statusapi" target="_blank" rel="noopener noreferrer">
+                Open source
+              </a>
+            </span>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }

@@ -1,17 +1,12 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/statusapi' : '',
-  reactStrictMode: true,
-
+  output: "export",
+  basePath: "/statusapi",
   images: {
     unoptimized: true,
   },
-
-  experimental: {
-    optimizePackageImports: ['lucide-react'],
-  },
+  trailingSlash: true,
 };
 
 export default nextConfig;

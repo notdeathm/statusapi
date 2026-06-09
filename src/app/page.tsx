@@ -1,198 +1,391 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { RefreshCw, AlertCircle, TrendingUp, Github } from "lucide-react";
-import { StatusCard } from "@/components/StatusCard";
-import { HistoryView } from "@/components/HistoryView";
-import type { Service, StatusRecord } from "@/lib/types";
-import type { MaintenanceNote } from "@/lib/maintenance";
+import { useEffect, useState, useCallback } from "react";
+import Nav from "@/components/Nav";
+import StatusBadge from "@/components/StatusBadge";
+import HistoryBars from "@/components/HistoryBars";
+import UptimeBar from "@/components/UptimeBar";
+import type {
+  StatusData,
+  HistoryData,
+  MaintenanceData,
+  StatusValue,
+} from "@/types";
+import { formatResponseTime, timeAgo } from "@/lib/config";
 
-interface ServiceStatus {
-  service: Service;
-  currentStatus: StatusRecord;
-  uptime30d: number;
-}
+const BASE =
+  typeof window !== "undefined" && window.location.hostname === "localhost"
+    ? ""
+    : "/statusapi";
 
-export default function Dashboard() {
-  const [services, setServices] = useState<ServiceStatus[]>([]);
-  const [maintenance, setMaintenance] = useState<
-    Record<string, MaintenanceNote>
-  >({});
+export default function DashboardPage() {
+  const [status, setStatus] = useState<StatusData | null>(null);
+  const [history, setHistory] = useState<HistoryData | null>(null);
+  const [maintenance, setMaintenance] = useState<MaintenanceData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [lastRefresh, setLastRefresh] = useState<string>("");
   const [showHistory, setShowHistory] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const [countdown, setCountdown] = useState(60);
 
-  const fetchStatus = async () => {
+  const fetchData = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
+    else setRefreshing(true);
+    setError(null);
+
     try {
-      setLoading(true);
-      setError(null);
-
-      const [statusRes, maintenanceRes] = await Promise.all([
-        fetch("status.json"),
-        fetch("maintenance.json"),
+      const [statusRes, maintRes] = await Promise.all([
+        fetch(`${BASE}/status.json?t=${Date.now()}`),
+        fetch(`${BASE}/maintenance.json?t=${Date.now()}`),
       ]);
 
-      if (!statusRes.ok) throw new Error("Failed to fetch status");
+      if (!statusRes.ok) throw new Error(`HTTP ${statusRes.status}`);
+      const statusJson: StatusData = await statusRes.json();
+      setStatus(statusJson);
+      setLastRefresh(new Date().toISOString());
+      setCountdown(60);
 
-      const statusData = await statusRes.json();
-
-      if (statusData.success) {
-        setServices(statusData.services);
-        setLastUpdated(new Date());
-      } else {
-        throw new Error(statusData.error || "Failed to fetch status");
+      if (maintRes.ok) {
+        const maintJson: MaintenanceData = await maintRes.json();
+        setMaintenance(maintJson);
       }
 
-      if (maintenanceRes.ok) {
-        const maintenanceData = await maintenanceRes.json();
-        if (maintenanceData.success) {
-          setMaintenance(maintenanceData.data.services);
+      // Try loading history (may not exist)
+      try {
+        const histRes = await fetch(`${BASE}/history.json?t=${Date.now()}`);
+        if (histRes.ok) {
+          const histJson: HistoryData = await histRes.json();
+          setHistory(histJson);
         }
+      } catch {
+        // history.json is optional
       }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : "Unknown error";
+      setError(`Failed to load status data: ${msg}`);
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+    const refreshInterval = setInterval(() => fetchData(true), 60_000);
+    const countdownInterval = setInterval(() => {
+      setCountdown((prev) => (prev > 0 ? prev - 1 : 60));
+    }, 1000);
+
+    return () => {
+      clearInterval(refreshInterval);
+      clearInterval(countdownInterval);
+    };
+  }, [fetchData]);
+
+  // Determine overall status
+  const overallStatus = (): { label: string; cls: string; sub: string } => {
+    if (!status)
+      return {
+        label: "Loading Systems…",
+        cls: "loading",
+        sub: "Checking connectivity",
+      };
+    if (status.allOperational)
+      return {
+        label: "All Systems Operational",
+        cls: "operational",
+        sub: `Currently monitoring ${status.totalServices} services with 100% uptime.`,
+      };
+    const hasDown = status.services.some(
+      (s) => s.currentStatus.status === "down",
+    );
+    if (hasDown)
+      return {
+        label: "Service Outage Detected",
+        cls: "outage",
+        sub: "Our engineers have been notified and are investigating.",
+      };
+    return {
+      label: "Partial Degradation",
+      cls: "degraded",
+      sub: "Some services are experiencing higher than normal latency.",
+    };
   };
 
-  useEffect(() => {
-    fetchStatus();
-  }, []);
+  const getHistoryForService = (serviceId: string) =>
+    history?.services?.find((h) => h.serviceId === serviceId)?.history;
 
-  useEffect(() => {
-    const interval = setInterval(fetchStatus, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const overallStatus = services.every((s) => s.currentStatus.status === "up")
-    ? "All Systems Operational"
-    : services.some((s) => s.currentStatus.status === "down")
-      ? "Some Systems Down"
-      : "Degraded Performance";
+  const overall = overallStatus();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        {/* Showcase Banner */}
-        <div className="mb-6 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 sm:p-5 shadow-sm">
-          <p className="text-sm text-slate-600 dark:text-slate-400">
-            A serverless status page that monitors the health of web services and GitHub repositories.
-            Automated checks every 5 minutes via GitHub Actions, powered by Next.js.
-          </p>
-          <a
-            href="https://github.com/notdeathm/statusapi"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mt-2 transition-colors"
-          >
-            <Github className="w-4 h-4" />
-            Open source on GitHub
-          </a>
-        </div>
-
-        {/* Status Summary */}
-        <div className="mb-8">
-          <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 sm:p-6 shadow-sm">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
-                  System Status
-                </h1>
-                <p className="text-base sm:text-lg font-semibold text-slate-600 dark:text-slate-300">
-                  {overallStatus}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={fetchStatus}
-                  disabled={loading}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <RefreshCw
-                    className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}
-                  />
-                  Refresh
-                </button>
-
-                <button
-                  onClick={() => setShowHistory(!showHistory)}
-                  className="flex items-center gap-2 px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 dark:hover:bg-slate-500 transition-colors"
-                >
-                  <TrendingUp className="w-4 h-4" />
-                  {showHistory ? "Dashboard" : "History"}
-                </button>
+    <>
+      <Nav />
+      <main>
+        <div className="container">
+          {/* ── HERO ─────────────────────────── */}
+          <section className="hero">
+            <div className={`hero-status-card ${overall.cls}`}>
+              <div className="hero-status-header">
+                <div className="pulse-container">
+                  <span className="pulse-dot" />
+                  <span className="pulse-ring" />
+                </div>
+                <div className="hero-status-text">
+                  <h1 className="hero-title">{overall.label}</h1>
+                  <p className="hero-subtitle">{overall.sub}</p>
+                </div>
               </div>
             </div>
 
-            {lastUpdated && (
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-4">
-                Last updated: {lastUpdated.toLocaleTimeString()}
-              </p>
+            <div className="hero-meta">
+              {lastRefresh && (
+                <span className="hero-meta-item">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="6"
+                      cy="6"
+                      r="5"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                    />
+                    <path
+                      d="M6 3.5V6l1.5 1.5"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  Updated {timeAgo(lastRefresh)}
+                </span>
+              )}
+              <span className="hero-meta-item">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M7.5 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M6 10.5c-2.5 0-4.5-2-4.5-4.5S3.5 1.5 6 1.5s4.5 2 4.5 4.5-2 4.5-4.5 4.5zM6 3a3 3 0 100 6 3 3 0 000-6z"
+                    fill="currentColor"
+                    opacity="0.4"
+                  />
+                </svg>
+                Next refresh in {countdown}s
+              </span>
+            </div>
+          </section>
+
+          {/* ── TOOLBAR ──────────────────────── */}
+          <div className="toolbar">
+            <div className="toolbar-left">
+              <span className="section-label">
+                {status
+                  ? `Monitoring ${status.totalServices} Services`
+                  : "Services"}
+              </span>
+            </div>
+            <div className="toolbar-actions">
+              <button
+                className={`btn ${showHistory ? "active" : ""}`}
+                onClick={() => setShowHistory((v) => !v)}
+                aria-pressed={showHistory}
+              >
+                <span className="btn-icon">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </span>
+                {showHistory ? "Hide History" : "Show History"}
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={() => fetchData(true)}
+                disabled={refreshing}
+                aria-label="Refresh status"
+              >
+                <span
+                  className="btn-icon"
+                  style={{
+                    display: "inline-block",
+                    animation: refreshing
+                      ? "spin 0.8s linear infinite"
+                      : "none",
+                  }}
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M23 4v6h-6"></path>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                  </svg>
+                </span>
+                {refreshing ? "Refreshing..." : "Refresh Now"}
+              </button>
+            </div>
+          </div>
+
+          {/* ── ERROR ───────────────────────── */}
+          {error && (
+            <div className="error-state">
+              <span>⚠</span>
+              {error}
+            </div>
+          )}
+
+          {/* ── LOADING ─────────────────────── */}
+          {loading && !error && (
+            <div className="loading-state">
+              <div className="spinner" />
+              Fetching service status…
+            </div>
+          )}
+
+          {/* ── SERVICES ────────────────────── */}
+          {!loading && !error && status && (
+            <div className="services-grid">
+              {status.services.map((svc) => {
+                const maint = maintenance?.services?.[svc.service.id];
+                const effectiveStatus: StatusValue = maint?.isDown
+                  ? "maintenance"
+                  : svc.currentStatus.status;
+
+                const svcHistory = getHistoryForService(svc.service.id);
+
+                return (
+                  <div className="service-card" key={svc.service.id}>
+                    <div className="service-card-left">
+                      {/* Maintenance banner */}
+                      {maint?.isDown && (
+                        <div className="maintenance-banner">
+                          <span className="maintenance-banner-icon">⚙</span>
+                          <div className="maintenance-banner-content">
+                            <div className="maintenance-banner-title">
+                              Scheduled Maintenance
+                            </div>
+                            <div className="maintenance-banner-desc">
+                              {maint.reason}
+                              {maint.estimatedDowntime && (
+                                <> · Est. downtime: {maint.estimatedDowntime}</>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="service-card-top">
+                        <span className="service-name">{svc.service.name}</span>
+                        <span className="service-type-badge">
+                          {svc.service.type}
+                        </span>
+                      </div>
+
+                      {svc.service.description && (
+                        <div className="service-desc">
+                          {svc.service.description}
+                        </div>
+                      )}
+
+                      <div className="service-url">{svc.service.url}</div>
+
+                      <div className="service-stats">
+                        <div className="service-stat">
+                          Response{" "}
+                          <span className="service-stat-val">
+                            {formatResponseTime(svc.currentStatus.responseTime)}
+                          </span>
+                        </div>
+                        <div className="service-stat">
+                          30d uptime{" "}
+                          <span className="service-stat-val">
+                            {svc.uptime30d.toFixed(2)}%
+                          </span>
+                        </div>
+                        <div className="service-stat">
+                          Last checked{" "}
+                          <span className="service-stat-val">
+                            {timeAgo(svc.currentStatus.lastChecked)}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* History bars – toggled by button */}
+                      {showHistory && (
+                        <>
+                          <HistoryBars history={svcHistory} />
+                          <UptimeBar uptime={svc.uptime30d} />
+                        </>
+                      )}
+                    </div>
+
+                    <div>
+                      <StatusBadge status={effectiveStatus} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </main>
+
+      <footer>
+        <div className="container">
+          <div className="footer-inner">
+            <span className="footer-text">
+              © {new Date().getFullYear()} Status API · Made by{" "}
+              <a
+                href="https://notdeath.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                NotDeath
+              </a>
+              {" · "}
+              <a
+                href="https://github.com/notdeathm/statusapi"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open source
+              </a>
+            </span>
+            {lastRefresh && (
+              <span className="footer-text">
+                Last updated: {new Date(lastRefresh).toLocaleString()}
+              </span>
             )}
           </div>
         </div>
-
-        {/* History View */}
-        {showHistory && (
-          <div className="mb-8">
-            <HistoryView />
-          </div>
-        )}
-
-        {/* Error State */}
-        {error && (
-          <div className="mb-8 rounded-lg border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-900/20 p-4 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-semibold text-red-900 dark:text-red-200">
-                Error
-              </h3>
-              <p className="text-sm text-red-800 dark:text-red-300">{error}</p>
-            </div>
-          </div>
-        )}
-
-        {/* Loading State */}
-        {loading && services.length === 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="h-64 rounded-lg bg-slate-200 dark:bg-slate-700 animate-pulse"
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Services Grid */}
-        {!showHistory && services.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map(({ service, currentStatus, uptime30d }) => (
-              <div key={service.id} className="animate-fade-in">
-                <StatusCard
-                  service={service}
-                  status={currentStatus}
-                  uptime={uptime30d}
-                  maintenance={maintenance[service.id]}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Empty State */}
-        {!loading && services.length === 0 && !error && (
-          <div className="text-center py-12">
-            <AlertCircle className="w-12 h-12 text-slate-400 dark:text-slate-600 mx-auto mb-4" />
-            <p className="text-slate-600 dark:text-slate-400">
-              No services configured
-            </p>
-          </div>
-        )}
-      </div>
-    </div>
+      </footer>
+    </>
   );
 }

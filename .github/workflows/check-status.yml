@@ -2,36 +2,52 @@ name: Check Status
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # Every 5 minutes
-  workflow_dispatch: # Manual trigger
+    - cron: "*/5 * * * *" # every 5 minutes
+  workflow_dispatch: # allow manual trigger
 
 permissions:
-  contents: write
+  contents: write # needed to commit updated JSON files
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: "20"
 
-      - name: Install dependencies
-        run: npm install
+      - name: Run status checks
+        id: checks
+        run: node scripts/check-status.js
 
-      - name: Run status check
-        run: npx tsx scripts/check-status.ts
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Send Email Notification
+        if: steps.checks.outputs.outage_detected == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: ${{ secrets.MAIL_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "🚨 Status Alert: Service Outage Detected"
+          body: |
+            A service outage has been detected for the following services:
+            ${{ steps.checks.outputs.failing_services }}
 
-      - name: Commit and push changes
+            Check the dashboard for more details:
+            https://notdeathm.github.io/statusapi/
+          to: notdeath@duck.com
+          from: Status API Bot <${{ secrets.MAIL_USERNAME }}>
+
+      - name: Commit updated status files
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add public/status.json public/history.json public/maintenance.json
-          git commit -m "chore: update status [skip ci]" || echo "No changes to commit"
+          git config --local user.name "Status Bot"
+          git add public/status.json public/history.json public/maintenance.json public/_history_state.json || true
+          git diff --staged --quiet || git commit -m "chore: update status $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
           git push
