@@ -1,0 +1,29 @@
+{
+  "notdeath-website": [
+    {
+      "date": "2026-06-08",
+      "status": "down",
+      "responseTime": 255,
+      "uptime": 0,
+      "incidents": 1
+    }
+  ],
+  "github-notdeath-repo": [
+    {
+      "date": "2026-06-08",
+      "status": "down",
+      "responseTime": 56,
+      "uptime": 0,
+      "incidents": 1
+    }
+  ],
+  "status-api": [
+    {
+      "date": "2026-06-08",
+      "status": "down",
+      "responseTime": 288,
+      "uptime": 0,
+      "incidents": 1
+    }
+  ]
+}

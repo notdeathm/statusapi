@@ -1,0 +1,71 @@
+{
+  "success": true,
+  "timestamp": "2026-06-08T22:09:47.174Z",
+  "services": [
+    {
+      "service": {
+        "id": "notdeath-website",
+        "name": "NotDeath Website",
+        "description": "Personal portfolio website",
+        "url": "https://notdeath.vercel.app",
+        "type": "http",
+        "checkInterval": 300,
+        "timeout": 5000
+      },
+      "currentStatus": {
+        "serviceId": "notdeath-website",
+        "status": "down",
+        "statusCode": 403,
+        "responseTime": 255,
+        "timestamp": "2026-06-08T22:09:47.455Z",
+        "lastChecked": "2026-06-08T22:09:47.455Z",
+        "uptime": 0
+      },
+      "uptime30d": 0
+    },
+    {
+      "service": {
+        "id": "github-notdeath-repo",
+        "name": "GitHub Repository",
+        "description": "Main notdeath repository",
+        "url": "https://github.com/notdeathm/notdeath",
+        "type": "github",
+        "owner": "notdeathm",
+        "repo": "notdeath"
+      },
+      "currentStatus": {
+        "serviceId": "github-notdeath-repo",
+        "status": "down",
+        "statusCode": 403,
+        "responseTime": 56,
+        "timestamp": "2026-06-08T22:09:47.513Z",
+        "lastChecked": "2026-06-08T22:09:47.513Z",
+        "uptime": 0
+      },
+      "uptime30d": 0
+    },
+    {
+      "service": {
+        "id": "status-api",
+        "name": "Status API",
+        "description": "This status page website",
+        "url": "https://status-api.habibberrada75.workers.dev",
+        "type": "http",
+        "checkInterval": 300,
+        "timeout": 5000
+      },
+      "currentStatus": {
+        "serviceId": "status-api",
+        "status": "down",
+        "statusCode": 403,
+        "responseTime": 288,
+        "timestamp": "2026-06-08T22:09:47.802Z",
+        "lastChecked": "2026-06-08T22:09:47.802Z",
+        "uptime": 0
+      },
+      "uptime30d": 0
+    }
+  ],
+  "totalServices": 3,
+  "allOperational": false
+}
