@@ -32,16 +32,27 @@ function fetchUrl(url, timeout = 8000) {
   return new Promise((resolve) => {
     const start = Date.now();
     const mod = url.startsWith("https") ? https : http;
-    const req = mod.get(url, { timeout }, (res) => {
+    const options = {
+      timeout,
+      headers: {
+        "User-Agent": "StatusAPI-Bot/1.0",
+      },
+    };
+    const req = mod.get(url, options, (res) => {
       res.resume();
       resolve({ ok: true, statusCode: res.statusCode, ms: Date.now() - start });
     });
-    req.on("error", () =>
-      resolve({ ok: false, statusCode: null, ms: Date.now() - start }),
+    req.on("error", (e) =>
+      resolve({
+        ok: false,
+        statusCode: null,
+        ms: Date.now() - start,
+        error: e.message,
+      }),
     );
     req.on("timeout", () => {
       req.destroy();
-      resolve({ ok: false, statusCode: null, ms: timeout });
+      resolve({ ok: false, statusCode: null, ms: timeout, error: "timeout" });
     });
   });
 }
@@ -57,6 +68,7 @@ async function checkHttp(service) {
     timestamp: new Date().toISOString(),
     lastChecked: new Date().toISOString(),
     uptime: up ? 100 : 0,
+    error: result.error,
   };
 }
 
@@ -72,6 +84,7 @@ async function checkGithub(service) {
     timestamp: new Date().toISOString(),
     lastChecked: new Date().toISOString(),
     uptime: up ? 100 : 0,
+    error: result.error,
   };
 }
 
@@ -94,12 +107,24 @@ async function checkService(service) {
 }
 
 // ── History management ────────────────────────────────
-function loadHistoryState() {
+function loadJson(filePath, fallback = {}) {
   try {
-    return JSON.parse(fs.readFileSync(HIST_STATE, "utf8"));
+    const content = fs.readFileSync(filePath, "utf8");
+    // Simple check for git conflict markers
+    if (content.includes("<<<<<<<") || content.includes(">>>>>>>")) {
+      console.warn(
+        `[WARN] Conflict markers detected in ${filePath}. Resetting.`,
+      );
+      return fallback;
+    }
+    return JSON.parse(content);
   } catch {
-    return {};
+    return fallback;
   }
+}
+
+function loadHistoryState() {
+  return loadJson(HIST_STATE, {});
 }
 
 function saveHistoryState(state) {
@@ -114,44 +139,59 @@ function updateHistory(state, serviceId, checkResult) {
   if (!state[serviceId]) state[serviceId] = [];
 
   const todayStr = today();
-  const existing = state[serviceId].find((e) => e.date === todayStr);
+  let existing = state[serviceId].find((e) => e.date === todayStr);
 
-  if (existing) {
-    // Update today's entry
-    existing.uptime =
-      checkResult.status === "up"
-        ? Math.min(100, existing.uptime + 1)
-        : existing.uptime;
-    if (checkResult.status === "down") existing.incidents += 1;
-    existing.responseTime = checkResult.responseTime ?? existing.responseTime;
-    existing.status = checkResult.status;
-  } else {
-    state[serviceId].push({
+  if (!existing) {
+    existing = {
       date: todayStr,
       status: checkResult.status,
       responseTime: checkResult.responseTime ?? null,
-      uptime: checkResult.status === "up" ? 100 : 0,
-      incidents: checkResult.status === "down" ? 1 : 0,
-    });
+      upCount: 0,
+      totalCount: 0,
+      incidents: 0,
+    };
+    state[serviceId].push(existing);
   }
 
-  // Keep only 30 days
+  existing.totalCount += 1;
+  if (checkResult.status === "up") {
+    existing.upCount += 1;
+  } else {
+    existing.incidents += 1;
+  }
+
+  existing.status = checkResult.status;
+  existing.responseTime = checkResult.responseTime ?? existing.responseTime;
+  // Calculate percentage
+  existing.uptime = Math.round((existing.upCount / existing.totalCount) * 100);
+
+  // Keep only 90 days of detailed state
   state[serviceId] = state[serviceId]
     .sort((a, b) => a.date.localeCompare(b.date))
-    .slice(-30);
+    .slice(-90);
 
   return state;
 }
 
 function calcUptime30d(history) {
   if (!history || history.length === 0) return 100;
-  const avg = history.reduce((acc, h) => acc + h.uptime, 0) / history.length;
-  return Math.round(avg * 100) / 100;
+  // Use last 30 entries
+  const recent = history.slice(-30);
+  const totalUp = recent.reduce((acc, h) => acc + (h.upCount ?? 0), 0);
+  const totalChecks = recent.reduce((acc, h) => acc + (h.totalCount ?? 0), 0);
+
+  if (totalChecks === 0) {
+    // Fallback for old data format
+    const avg = recent.reduce((acc, h) => acc + h.uptime, 0) / recent.length;
+    return Math.round(avg * 100) / 100;
+  }
+
+  return Math.round((totalUp / totalChecks) * 10000) / 100;
 }
 
 // ── Main ─────────────────────────────────────────────
 async function main() {
-  const { services } = JSON.parse(fs.readFileSync(SERVICES, "utf8"));
+  const { services } = loadJson(SERVICES, { services: [] });
   const histState = loadHistoryState();
   const now = new Date().toISOString();
 

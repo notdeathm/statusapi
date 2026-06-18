@@ -1,14 +1,6 @@
 {
   "success": true,
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-  "timestamp": "2026-06-09T11:50:36.340Z",
-=======
-  "timestamp": "2026-06-09T12:55:06.165Z",
->>>>>>> Stashed changes
-=======
-  "timestamp": "2026-06-09T16:47:23.151Z",
->>>>>>> ba98d1cbe4585cb2d73c854ff1bae39563191d02
+  "timestamp": "2026-06-18T02:05:44.835Z",
   "services": [
     {
       "service": {
@@ -24,24 +16,12 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        "responseTime": 185,
-        "timestamp": "2026-06-09T11:50:36.526Z",
-        "lastChecked": "2026-06-09T11:50:36.526Z",
-=======
-        "responseTime": 336,
-        "timestamp": "2026-06-09T12:55:06.514Z",
-        "lastChecked": "2026-06-09T12:55:06.514Z",
->>>>>>> Stashed changes
-=======
-        "responseTime": 163,
-        "timestamp": "2026-06-09T16:47:23.314Z",
-        "lastChecked": "2026-06-09T16:47:23.314Z",
->>>>>>> ba98d1cbe4585cb2d73c854ff1bae39563191d02
+        "responseTime": 479,
+        "timestamp": "2026-06-18T02:05:45.323Z",
+        "lastChecked": "2026-06-18T02:05:45.323Z",
         "uptime": 100
       },
-      "uptime30d": 50
+      "uptime30d": 100
     },
     {
       "service": {
@@ -55,23 +35,14 @@
       },
       "currentStatus": {
         "serviceId": "github-notdeath-repo",
-<<<<<<< Updated upstream
         "status": "up",
         "statusCode": 200,
-        "responseTime": 176,
-        "timestamp": "2026-06-09T16:47:23.495Z",
-        "lastChecked": "2026-06-09T16:47:23.495Z",
+        "responseTime": 385,
+        "timestamp": "2026-06-18T02:05:45.753Z",
+        "lastChecked": "2026-06-18T02:05:45.753Z",
         "uptime": 100
-=======
-        "status": "down",
-        "statusCode": 403,
-        "responseTime": 561,
-        "timestamp": "2026-06-09T12:55:07.096Z",
-        "lastChecked": "2026-06-09T12:55:07.096Z",
-        "uptime": 0
->>>>>>> Stashed changes
       },
-      "uptime30d": 98
+      "uptime30d": 100
     },
     {
       "service": {
@@ -87,24 +58,12 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        "responseTime": 507,
-        "timestamp": "2026-06-09T11:50:37.330Z",
-        "lastChecked": "2026-06-09T11:50:37.330Z",
-=======
-        "responseTime": 1064,
-        "timestamp": "2026-06-09T12:55:08.160Z",
-        "lastChecked": "2026-06-09T12:55:08.160Z",
->>>>>>> Stashed changes
-=======
-        "responseTime": 850,
-        "timestamp": "2026-06-09T16:47:24.345Z",
-        "lastChecked": "2026-06-09T16:47:24.345Z",
->>>>>>> ba98d1cbe4585cb2d73c854ff1bae39563191d02
+        "responseTime": 823,
+        "timestamp": "2026-06-18T02:05:46.578Z",
+        "lastChecked": "2026-06-18T02:05:46.578Z",
         "uptime": 100
       },
-      "uptime30d": 50
+      "uptime30d": 100
     }
   ],
   "totalServices": 3,
