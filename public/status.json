@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-06-20T18:02:22.257Z",
+  "timestamp": "2026-06-20T19:49:42.067Z",
   "services": [
     {
       "service": {
@@ -16,9 +16,9 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 155,
-        "timestamp": "2026-06-20T18:02:22.414Z",
-        "lastChecked": "2026-06-20T18:02:22.414Z",
+        "responseTime": 159,
+        "timestamp": "2026-06-20T19:49:42.230Z",
+        "lastChecked": "2026-06-20T19:49:42.230Z",
         "uptime": 100
       },
       "uptime30d": 100
@@ -37,9 +37,9 @@
         "serviceId": "github-notdeath-repo",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 240,
-        "timestamp": "2026-06-20T18:02:22.661Z",
-        "lastChecked": "2026-06-20T18:02:22.661Z",
+        "responseTime": 242,
+        "timestamp": "2026-06-20T19:49:42.479Z",
+        "lastChecked": "2026-06-20T19:49:42.479Z",
         "uptime": 100
       },
       "uptime30d": 100
@@ -58,9 +58,9 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 702,
-        "timestamp": "2026-06-20T18:02:23.365Z",
-        "lastChecked": "2026-06-20T18:02:23.365Z",
+        "responseTime": 809,
+        "timestamp": "2026-06-20T19:49:43.289Z",
+        "lastChecked": "2026-06-20T19:49:43.289Z",
         "uptime": 100
       },
       "uptime30d": 100
