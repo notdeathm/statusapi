@@ -76,6 +76,15 @@
       "totalCount": 11,
       "incidents": 0,
       "uptime": 100
+    },
+    {
+      "date": "2026-06-25",
+      "status": "up",
+      "responseTime": 156,
+      "upCount": 1,
+      "totalCount": 1,
+      "incidents": 0,
+      "uptime": 100
     }
   ],
   "github-notdeath-repo": [
@@ -155,6 +164,15 @@
       "totalCount": 11,
       "incidents": 0,
       "uptime": 100
+    },
+    {
+      "date": "2026-06-25",
+      "status": "up",
+      "responseTime": 264,
+      "upCount": 1,
+      "totalCount": 1,
+      "incidents": 0,
+      "uptime": 100
     }
   ],
   "status-api": [
@@ -232,6 +250,15 @@
       "responseTime": 442,
       "upCount": 11,
       "totalCount": 11,
+      "incidents": 0,
+      "uptime": 100
+    },
+    {
+      "date": "2026-06-25",
+      "status": "up",
+      "responseTime": 933,
+      "upCount": 1,
+      "totalCount": 1,
       "incidents": 0,
       "uptime": 100
     }
