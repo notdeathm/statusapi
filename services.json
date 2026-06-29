@@ -22,7 +22,7 @@
       "id": "status-api",
       "name": "Status API",
       "description": "This status page website",
-      "url": "https://status-api.habibberrada75.workers.dev",
+      "url": "https://notdeathm.github.io/statusapi/",
       "type": "http",
       "checkInterval": 300,
       "timeout": 5000

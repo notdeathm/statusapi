@@ -28,6 +28,7 @@ jobs:
 
       - name: Send Email Notification
         if: steps.checks.outputs.outage_detected == 'true'
+        continue-on-error: true
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: ${{ secrets.MAIL_SERVER }}
