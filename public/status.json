@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-06-26T23:35:07.664Z",
+  "timestamp": "2026-06-29T19:47:09.547Z",
   "services": [
     {
       "service": {
@@ -16,9 +16,9 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 141,
-        "timestamp": "2026-06-26T23:35:07.808Z",
-        "lastChecked": "2026-06-26T23:35:07.808Z",
+        "responseTime": 102,
+        "timestamp": "2026-06-29T19:47:09.652Z",
+        "lastChecked": "2026-06-29T19:47:09.652Z",
         "uptime": 100
       },
       "uptime30d": 100
@@ -37,9 +37,9 @@
         "serviceId": "github-notdeath-repo",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 157,
-        "timestamp": "2026-06-26T23:35:07.972Z",
-        "lastChecked": "2026-06-26T23:35:07.972Z",
+        "responseTime": 130,
+        "timestamp": "2026-06-29T19:47:09.790Z",
+        "lastChecked": "2026-06-29T19:47:09.790Z",
         "uptime": 100
       },
       "uptime30d": 100
@@ -49,7 +49,7 @@
         "id": "status-api",
         "name": "Status API",
         "description": "This status page website",
-        "url": "https://status-api.habibberrada75.workers.dev",
+        "url": "https://notdeathm.github.io/statusapi/",
         "type": "http",
         "checkInterval": 300,
         "timeout": 5000
@@ -58,9 +58,9 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 351,
-        "timestamp": "2026-06-26T23:35:08.323Z",
-        "lastChecked": "2026-06-26T23:35:08.323Z",
+        "responseTime": 81,
+        "timestamp": "2026-06-29T19:47:09.871Z",
+        "lastChecked": "2026-06-29T19:47:09.871Z",
         "uptime": 100
       },
       "uptime30d": 100
