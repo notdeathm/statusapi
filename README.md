@@ -89,4 +89,4 @@ Integrate your status into other apps using these static JSON endpoints:
 
 Distributed under the **MIT License**. See `LICENSE` for more information.
 
-Developed with ❤️ by [NotDeath](https://notdeath.vercel.app).
+Developed with ❤️ by [NotDeath](https://notdeathm.is-a.dev).

@@ -363,7 +363,7 @@ export default function DashboardPage() {
             <span className="footer-text">
               © {new Date().getFullYear()} Status API · Made by{" "}
               <a
-                href="https://notdeath.vercel.app"
+                href="https://notdeathm.is-a.dev"
                 target="_blank"
                 rel="noopener noreferrer"
               >

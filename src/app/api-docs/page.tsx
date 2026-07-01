@@ -125,7 +125,7 @@ export default function ApiDocsPage() {
         "id": "notdeath-website",
         "name": "NotDeath Website",
         "description": "Personal portfolio website",
-        "url": "https://notdeath.vercel.app",
+        "url": "https://notdeathm.is-a.dev",
         "type": "http"
       },
       "currentStatus": {
@@ -264,7 +264,7 @@ checkStatus();`}</pre>
           <div className="footer-inner">
             <span className="footer-text">
               © {new Date().getFullYear()} Status API · Made by{" "}
-              <a href="https://notdeath.vercel.app" target="_blank" rel="noopener noreferrer">
+              <a href="https://notdeathm.is-a.dev" target="_blank" rel="noopener noreferrer">
                 NotDeath
               </a>
               {" · "}

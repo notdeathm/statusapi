@@ -4,7 +4,7 @@
       "id": "notdeath-website",
       "name": "NotDeath Website",
       "description": "Personal portfolio website",
-      "url": "https://notdeath.vercel.app",
+      "url": "https://notdeathm.is-a.dev",
       "type": "http",
       "checkInterval": 300,
       "timeout": 5000
