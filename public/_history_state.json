@@ -115,12 +115,12 @@
     },
     {
       "date": "2026-07-01",
-      "status": "up",
-      "responseTime": 91,
+      "status": "down",
+      "responseTime": 94,
       "upCount": 7,
-      "totalCount": 7,
-      "incidents": 0,
-      "uptime": 100
+      "totalCount": 8,
+      "incidents": 1,
+      "uptime": 88
     }
   ],
   "github-notdeath-repo": [
@@ -240,9 +240,9 @@
     {
       "date": "2026-07-01",
       "status": "up",
-      "responseTime": 183,
-      "upCount": 7,
-      "totalCount": 7,
+      "responseTime": 277,
+      "upCount": 8,
+      "totalCount": 8,
       "incidents": 0,
       "uptime": 100
     }
@@ -364,9 +364,9 @@
     {
       "date": "2026-07-01",
       "status": "up",
-      "responseTime": 38,
-      "upCount": 7,
-      "totalCount": 7,
+      "responseTime": 423,
+      "upCount": 8,
+      "totalCount": 8,
       "incidents": 0,
       "uptime": 100
     }
