@@ -53,27 +53,13 @@ This project leverages a **Serverless-to-Static** architecture:
 | `description` | string | | Subtext describing the service. |
 | `url` | string | ✓ | The endpoint to ping. |
 | `type` | `http` \| `github` | ✓ | Monitoring logic to use. |
-| `timeout` | number | | Max wait time in ms (default: 8000). |
+| `timeout` | number | | Max wait time in ms (default: 10000). |
 
-### `maintenance.json` — Announcing downtime
-
-To put a service into maintenance mode, add its ID to the services object:
-
-```json
-{
-  "services": {
-    "notdeath-website": {
-      "isDown": true,
-      "reason": "Upgrading database to v16",
-      "startTime": "2026-06-20T14:00:00Z",
-      "estimatedDowntime": "30 minutes"
-    }
-  }
-}
-```
-
----
-
+### 🛡️ Network Probe & Verification Protocol
+To ensure high accuracy and avoid false positives:
+- **Operational Condition**: Connection succeeds and returns an HTTP status code between `200` and `399`.
+- **Failure Condition**: Connection times out (>10s), DNS fails, TCP is refused, or HTTP status is `>= 400`.
+- **Verification Protocol**: If a failure condition is met, the system waits **exactly 15 seconds** and retries the connection. Only if the second check also fails is the service marked as offline.
 ## 📧 Email Notifications
 
 The system is configured to send automatic alerts whenever a service outage is detected. 
@@ -98,19 +84,6 @@ Integrate your status into other apps using these static JSON endpoints:
 | `GET /status.json` | Latest heartbeat results for all services. |
 | `GET /history.json` | Detailed history data. |
 | `GET /maintenance.json` | Active and upcoming maintenance windows. |
-
----
-
-## 👨‍💻 Local Development
-
-```bash
-npm install         # Install dependencies
-npm run dev         # Launch the dashboard at localhost:3000
-node scripts/check-status.js # Manually trigger a health check
-npm run build       # Generate a production static export
-```
-
----
 
 ## 📄 License
 

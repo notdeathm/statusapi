@@ -81,6 +81,12 @@ export default function ApiDocsPage() {
               Integrate status data into your own tools using these static JSON endpoints.
               All endpoints are publicly accessible — no API key required.
             </p>
+            <div style={{ marginTop: 20, padding: 16, backgroundColor: 'var(--bg-card)', borderRadius: 8, border: '1px solid var(--border)' }}>
+              <h3 style={{ fontSize: 14, marginBottom: 8, fontFamily: 'var(--mono)', color: 'var(--text)' }}>Network Probe Specs & False Positive Mitigation</h3>
+              <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+                To ensure high accuracy, our probes run with a <strong>10-second timeout</strong>. If a service fails to respond with a <code>200-399</code> status code, the system initiates a <strong>Verification Protocol</strong>: it pauses for 15 seconds and tests the connection a second time to filter out temporary network jitter before officially marking the service as offline.
+              </p>
+            </div>
           </section>
 
           {/* Current Status */}

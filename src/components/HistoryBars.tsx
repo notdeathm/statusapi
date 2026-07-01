@@ -5,7 +5,7 @@ interface Props {
   days?: number;
 }
 
-export default function HistoryBars({ history, days = 30 }: Props) {
+export default function HistoryBars({ history, days = 90 }: Props) {
   // Build an array of `days` slots, newest on the right
   const bars: { status: StatusValue | "unknown"; date: string }[] = [];
 
@@ -22,12 +22,12 @@ export default function HistoryBars({ history, days = 30 }: Props) {
   }
 
   return (
-    <div className="history-bars" title="30-day uptime history">
+    <div className="history-bars" title={`${days}-day uptime history`}>
       {bars.map((bar, i) => (
         <div
           key={i}
           className={`history-bar ${bar.status}`}
-          title={`${bar.date}: ${bar.status}`}
+          title={`${bar.date}: ${bar.status === 'unknown' ? 'No Data' : bar.status}`}
         />
       ))}
     </div>

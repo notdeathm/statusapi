@@ -28,37 +28,36 @@ const HIST_STATE = path.join(PUBLIC, "_history_state.json");
 fs.mkdirSync(PUBLIC, { recursive: true });
 
 // ── Helpers ──────────────────────────────────────────
-function fetchUrl(url, timeout = 8000) {
-  return new Promise((resolve) => {
-    const start = Date.now();
-    const mod = url.startsWith("https") ? https : http;
-    const options = {
-      timeout,
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function fetchUrl(url, timeout = 10000) {
+  const start = Date.now();
+  try {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    
+    const res = await fetch(url, {
+      signal: controller.signal,
       headers: {
         "User-Agent": "StatusAPI-Bot/1.0",
       },
+    });
+    
+    clearTimeout(id);
+    return { ok: true, statusCode: res.status, ms: Date.now() - start };
+  } catch (e) {
+    const isTimeout = e.name === "AbortError";
+    return {
+      ok: false,
+      statusCode: null,
+      ms: isTimeout ? timeout : (Date.now() - start),
+      error: isTimeout ? "timeout" : e.message,
     };
-    const req = mod.get(url, options, (res) => {
-      res.resume();
-      resolve({ ok: true, statusCode: res.statusCode, ms: Date.now() - start });
-    });
-    req.on("error", (e) =>
-      resolve({
-        ok: false,
-        statusCode: null,
-        ms: Date.now() - start,
-        error: e.message,
-      }),
-    );
-    req.on("timeout", () => {
-      req.destroy();
-      resolve({ ok: false, statusCode: null, ms: timeout, error: "timeout" });
-    });
-  });
+  }
 }
 
 async function checkHttp(service) {
-  const result = await fetchUrl(service.url, service.timeout ?? 8000);
+  const result = await fetchUrl(service.url, service.timeout ?? 10000);
   const up = result.ok && result.statusCode >= 200 && result.statusCode < 400;
   return {
     serviceId: service.id,
@@ -74,7 +73,7 @@ async function checkHttp(service) {
 
 async function checkGithub(service) {
   const apiUrl = `https://api.github.com/repos/${service.owner}/${service.repo}`;
-  const result = await fetchUrl(apiUrl, service.timeout ?? 8000);
+  const result = await fetchUrl(apiUrl, service.timeout ?? 10000);
   const up = result.ok && result.statusCode === 200;
   return {
     serviceId: service.id,
@@ -89,21 +88,33 @@ async function checkGithub(service) {
 }
 
 async function checkService(service) {
-  try {
-    if (service.type === "github") return await checkGithub(service);
-    return await checkHttp(service);
-  } catch (e) {
-    return {
-      serviceId: service.id,
-      status: "down",
-      statusCode: null,
-      responseTime: null,
-      timestamp: new Date().toISOString(),
-      lastChecked: new Date().toISOString(),
-      uptime: 0,
-      error: e.message,
-    };
+  const doCheck = async () => {
+    try {
+      if (service.type === "github") return await checkGithub(service);
+      return await checkHttp(service);
+    } catch (e) {
+      return {
+        serviceId: service.id,
+        status: "down",
+        statusCode: null,
+        responseTime: null,
+        timestamp: new Date().toISOString(),
+        lastChecked: new Date().toISOString(),
+        uptime: 0,
+        error: e.message,
+      };
+    }
+  };
+
+  let result = await doCheck();
+  
+  if (result.status === "down") {
+    process.stdout.write(`\n    [Retry] ${service.name} down. Waiting 15s to verify... `);
+    await sleep(15000);
+    result = await doCheck();
   }
+
+  return result;
 }
 
 // ── History management ────────────────────────────────
