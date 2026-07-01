@@ -1,27 +1,27 @@
 {
   "success": true,
-  "timestamp": "2026-07-01T20:19:27.749Z",
+  "timestamp": "2026-07-01T21:53:20.284Z",
   "services": [
     {
       "service": {
         "id": "notdeath-website",
         "name": "NotDeath Website",
         "description": "Personal portfolio website",
-        "url": "https://notdeath.vercel.app",
+        "url": "https://notdeathm.is-a.dev",
         "type": "http",
         "checkInterval": 300,
         "timeout": 5000
       },
       "currentStatus": {
         "serviceId": "notdeath-website",
-        "status": "down",
-        "statusCode": 404,
-        "responseTime": 94,
-        "timestamp": "2026-07-01T20:19:43.005Z",
-        "lastChecked": "2026-07-01T20:19:43.005Z",
-        "uptime": 0
+        "status": "up",
+        "statusCode": 200,
+        "responseTime": 245,
+        "timestamp": "2026-07-01T21:53:20.531Z",
+        "lastChecked": "2026-07-01T21:53:20.531Z",
+        "uptime": 100
       },
-      "uptime30d": 99.11
+      "uptime30d": 99.12
     },
     {
       "service": {
@@ -37,9 +37,9 @@
         "serviceId": "github-notdeath-repo",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 277,
-        "timestamp": "2026-07-01T20:19:43.290Z",
-        "lastChecked": "2026-07-01T20:19:43.290Z",
+        "responseTime": 157,
+        "timestamp": "2026-07-01T21:53:20.701Z",
+        "lastChecked": "2026-07-01T21:53:20.701Z",
         "uptime": 100
       },
       "uptime30d": 100
@@ -58,14 +58,14 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 423,
-        "timestamp": "2026-07-01T20:19:43.713Z",
-        "lastChecked": "2026-07-01T20:19:43.713Z",
+        "responseTime": 193,
+        "timestamp": "2026-07-01T21:53:20.894Z",
+        "lastChecked": "2026-07-01T21:53:20.894Z",
         "uptime": 100
       },
       "uptime30d": 100
     }
   ],
   "totalServices": 3,
-  "allOperational": false
+  "allOperational": true
 }
