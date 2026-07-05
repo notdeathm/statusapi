@@ -152,9 +152,9 @@
     {
       "date": "2026-07-05",
       "status": "up",
-      "responseTime": 380,
-      "upCount": 6,
-      "totalCount": 6,
+      "responseTime": 304,
+      "upCount": 7,
+      "totalCount": 7,
       "incidents": 0,
       "uptime": 100
     }
@@ -312,11 +312,11 @@
     {
       "date": "2026-07-05",
       "status": "up",
-      "responseTime": 162,
-      "upCount": 5,
-      "totalCount": 6,
+      "responseTime": 139,
+      "upCount": 6,
+      "totalCount": 7,
       "incidents": 1,
-      "uptime": 83
+      "uptime": 86
     }
   ],
   "status-api": [
@@ -472,9 +472,9 @@
     {
       "date": "2026-07-05",
       "status": "up",
-      "responseTime": 85,
-      "upCount": 6,
-      "totalCount": 6,
+      "responseTime": 264,
+      "upCount": 7,
+      "totalCount": 7,
       "incidents": 0,
       "uptime": 100
     }
