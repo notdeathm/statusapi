@@ -206,9 +206,9 @@
     {
       "date": "2026-07-11",
       "status": "up",
-      "responseTime": 291,
-      "upCount": 16,
-      "totalCount": 16,
+      "responseTime": 164,
+      "upCount": 17,
+      "totalCount": 17,
       "incidents": 0,
       "uptime": 100
     }
@@ -420,9 +420,9 @@
     {
       "date": "2026-07-11",
       "status": "up",
-      "responseTime": 208,
-      "upCount": 16,
-      "totalCount": 16,
+      "responseTime": 113,
+      "upCount": 17,
+      "totalCount": 17,
       "incidents": 0,
       "uptime": 100
     }
@@ -634,9 +634,9 @@
     {
       "date": "2026-07-11",
       "status": "up",
-      "responseTime": 215,
-      "upCount": 16,
-      "totalCount": 16,
+      "responseTime": 65,
+      "upCount": 17,
+      "totalCount": 17,
       "incidents": 0,
       "uptime": 100
     }
