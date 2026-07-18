@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-07-18T14:40:57.387Z",
+  "timestamp": "2026-07-18T15:36:37.981Z",
   "services": [
     {
       "serviceId": "notdeath-website",
@@ -276,9 +276,9 @@
         {
           "date": "2026-07-18",
           "status": "up",
-          "responseTime": 271,
-          "upCount": 9,
-          "totalCount": 9,
+          "responseTime": 237,
+          "upCount": 10,
+          "totalCount": 10,
           "incidents": 0,
           "uptime": 100
         }
@@ -558,9 +558,9 @@
         {
           "date": "2026-07-18",
           "status": "up",
-          "responseTime": 246,
-          "upCount": 9,
-          "totalCount": 9,
+          "responseTime": 213,
+          "upCount": 10,
+          "totalCount": 10,
           "incidents": 0,
           "uptime": 100
         }
@@ -840,9 +840,9 @@
         {
           "date": "2026-07-18",
           "status": "up",
-          "responseTime": 454,
-          "upCount": 9,
-          "totalCount": 9,
+          "responseTime": 166,
+          "upCount": 10,
+          "totalCount": 10,
           "incidents": 0,
           "uptime": 100
         }
