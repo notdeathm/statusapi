@@ -42,7 +42,7 @@ self.__SERVER_FILES_MANIFEST={
         256,
         384
       ],
-      "path": "/statusapi/_next/image/",
+      "path": "/statusapi/_next/image",
       "loader": "default",
       "loaderFile": "",
       "domains": [],
@@ -79,7 +79,7 @@ self.__SERVER_FILES_MANIFEST={
     },
     "basePath": "/statusapi",
     "sassOptions": {},
-    "trailingSlash": true,
+    "trailingSlash": false,
     "i18n": null,
     "productionBrowserSourceMaps": false,
     "excludeDefaultMomentLocales": true,
@@ -309,8 +309,8 @@ self.__SERVER_FILES_MANIFEST={
     },
     "distDirRoot": ".next"
   },
-  "appDir": "/home/notdeath/Downloads/statusapi",
-  "relativeAppDir": "Downloads/statusapi",
+  "appDir": "/home/notdeath/Documents/GitHub/statusapi",
+  "relativeAppDir": "Documents/GitHub/statusapi",
   "files": [
     ".next/package.json",
     ".next/routes-manifest.json",

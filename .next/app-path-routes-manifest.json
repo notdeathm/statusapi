@@ -2,5 +2,6 @@
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/api-docs/page": "/api-docs",
+  "/incidents/page": "/incidents",
   "/page": "/"
 }

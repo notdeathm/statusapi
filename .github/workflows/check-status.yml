@@ -26,9 +26,11 @@ jobs:
         id: checks
         run: node scripts/check-status.js
 
-      - name: Send Email Notification
-        if: steps.checks.outputs.outage_detected == 'true'
+      - name: Send Email Notification (Outage)
+        if: steps.checks.outputs.outage_detected == 'true' && env.MAIL_SERVER != ''
         continue-on-error: true
+        env:
+          MAIL_SERVER: ${{ secrets.MAIL_SERVER }}
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: ${{ secrets.MAIL_SERVER }}
@@ -37,17 +39,57 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "🚨 Status Alert: Service Outage Detected"
           body: |
-            A service outage has been detected for the following services:
-            ${{ steps.checks.outputs.failing_services }}
+            A service outage has been detected:
+            Services affected: ${{ steps.checks.outputs.failing_services }}
 
             Check the dashboard for more details:
             https://notdeathm.github.io/statusapi/
           to: notdeath@duck.com
           from: Status API Bot <${{ secrets.MAIL_USERNAME }}>
 
+      - name: Send Discord Notification (Outage)
+        if: steps.checks.outputs.outage_detected == 'true' && env.DISCORD_WEBHOOK != ''
+        continue-on-error: true
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -s -X POST "$DISCORD_WEBHOOK" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "embeds": [{
+                "title": "🚨 Service Outage Detected",
+                "description": "The following services are down:\n**${{ steps.checks.outputs.failing_services }}**",
+                "color": 15548997,
+                "fields": [
+                  {"name": "Dashboard", "value": "https://notdeathm.github.io/statusapi/", "inline": false}
+                ],
+                "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
+              }]
+            }'
+
+      - name: Send Discord Notification (Degraded)
+        if: steps.checks.outputs.degraded_detected == 'true' && steps.checks.outputs.outage_detected != 'true' && env.DISCORD_WEBHOOK != ''
+        continue-on-error: true
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -s -X POST "$DISCORD_WEBHOOK" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "embeds": [{
+                "title": "⚠️ Service Degraded",
+                "description": "The following services are experiencing high latency:\n**${{ steps.checks.outputs.degraded_services }}**",
+                "color": 16776960,
+                "fields": [
+                  {"name": "Dashboard", "value": "https://notdeathm.github.io/statusapi/", "inline": false}
+                ],
+                "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
+              }]
+            }'
+
       - name: Commit updated status files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Status Bot"
-          git add public/status.json public/history.json public/maintenance.json public/_history_state.json || true
-          git diff --staged --quiet || (git commit -m "chore: update status $(date -u +'%Y-%m-%dT%H:%M:%SZ')" && git pull --rebase && git push)
+          git add public/status.json public/history.json public/incidents.json public/maintenance.json public/_history_state.json public/_incidents_state.json
+          git diff --staged --quiet || (git commit -m "chore: update status $(date -u +'%Y-%m-%dT%H:%M:%SZ')" && git pull --rebase --no-edit && git push)

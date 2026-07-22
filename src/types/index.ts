@@ -30,8 +30,11 @@ export interface HistoryEntry {
   date: string;
   status: StatusValue;
   responseTime?: number;
+  avgResponseTime?: number;
   uptime: number;
   incidents: number;
+  upCount?: number;
+  totalCount?: number;
 }
 
 export interface ServiceResult {
@@ -47,6 +50,8 @@ export interface StatusData {
   services: ServiceResult[];
   totalServices: number;
   allOperational: boolean;
+  anyDown?: boolean;
+  anyDegraded?: boolean;
 }
 
 export interface HistoryData {
@@ -69,4 +74,27 @@ export interface MaintenanceWindow {
 
 export interface MaintenanceData {
   services: Record<string, MaintenanceWindow>;
+}
+
+export interface IncidentEntry {
+  id: string;
+  serviceId: string;
+  serviceName: string;
+  status: StatusValue;
+  statusCode?: number | null;
+  startTime: string;
+  lastSeenDown?: string;
+  error?: string | null;
+  // Closed incidents only
+  resolvedTime?: string;
+  durationMs?: number;
+  resolvedStatus?: StatusValue;
+}
+
+export interface IncidentsData {
+  success: boolean;
+  timestamp: string;
+  openIncidents: IncidentEntry[];
+  closedIncidents: IncidentEntry[];
+  totalIncidents: number;
 }

@@ -4,6 +4,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "src/**"
+      - "public/**"
+      - "scripts/**"
+      - "services.json"
+      - "maintenance.json"
+      - "next.config.ts"
+      - "package.json"
   workflow_dispatch:
 
 permissions:
@@ -27,12 +35,10 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Run initial status check (seed public/ before build)
-        run: node scripts/check-status.js
+        run: npm ci
 
       - name: Build Next.js static export
         run: npm run build

@@ -1,25 +1,43 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Status API – Real-time Service Monitoring",
+  title: "StatusAPI – Real-time Service Monitoring",
   description:
-    "A serverless status page for monitoring the health of web services and GitHub repositories. Zero hosting costs, automated checks every 5 minutes.",
-  keywords: "status, monitoring, uptime, services, dashboard, serverless, github pages",
-  authors: [{ name: "notdeath" }],
+    "Real-time service status page for notdeath's projects. Monitor uptime, response times, and incidents across all services — updated every 5 minutes.",
+  keywords:
+    "status, uptime, monitoring, notdeath, services, incidents, response time, statusapi",
+  authors: [{ name: "notdeath", url: "https://notdeathm.is-a.dev" }],
   openGraph: {
     type: "website",
-    url: "https://notdeathm.github.io/statusapi",
-    title: "Status API – Real-time Service Monitoring",
+    url: "https://notdeathm.is-a.dev/statusapi/",
+    title: "StatusAPI – Real-time Service Monitoring",
     description:
-      "Serverless status page for monitoring web services and GitHub repositories",
+      "Monitor uptime, response times, and incidents for all notdeath services. Updated every 5 minutes.",
+    siteName: "StatusAPI",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Status API – Real-time Service Monitoring",
+    card: "summary",
+    title: "StatusAPI – Real-time Service Monitoring",
     description:
-      "Serverless status page for monitoring web services and GitHub repositories",
+      "Real-time status and uptime monitoring for notdeath's web services.",
   },
+  icons: {
+    icon: [{ url: "/statusapi/favicon.png", type: "image/png" }],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://notdeathm.is-a.dev/statusapi/",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#07080d",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
