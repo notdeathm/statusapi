@@ -622,7 +622,7 @@ export default function DashboardPage() {
               <a href="https://github.com/notdeathm/statusapi" target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>
-              <a href="/api-docs">API Docs</a>
+              <Link href="/api-docs">API Docs</Link>
               {lastRefresh && (
                 <span style={{ color: "var(--text-muted)", fontSize: 11, fontFamily: "var(--mono)" }}>
                   Updated {new Date(lastRefresh).toLocaleTimeString()}

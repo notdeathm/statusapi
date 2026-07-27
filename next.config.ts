@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   // 1. Trigger a static HTML export for GitHub Pages
@@ -11,6 +12,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
 };
 
 export default nextConfig;
+

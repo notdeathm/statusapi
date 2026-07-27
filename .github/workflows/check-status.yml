@@ -107,15 +107,10 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "Status Bot"
           
-          git add public/status.json \
-                  public/history.json \
-                  public/incidents.json \
-                  public/maintenance.json \
-                  public/_history_state.json \
-                  public/_incidents_state.json
+          git add public/
           
           if ! git diff --cached --quiet; then
             git commit -m "chore: update status $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-            git pull --rebase origin main
+            git pull --rebase --autostash origin main
             git push origin HEAD:main
           fi

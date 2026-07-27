@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import { BASE_PATH } from "@/lib/config";
 
@@ -575,7 +576,7 @@ export default function ApiDocsPage() {
             </span>
             <div className="footer-links">
               <a href="https://github.com/notdeathm/statusapi" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="/">Dashboard</a>
+              <Link href="/">Dashboard</Link>
             </div>
           </div>
         </div>

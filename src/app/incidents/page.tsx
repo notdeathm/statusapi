@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import IncidentTimeline from "@/components/IncidentTimeline";
 import type { IncidentsData, StatusData } from "@/types";
@@ -215,8 +216,8 @@ export default function IncidentsPage() {
             </span>
             <div className="footer-links">
               <a href="https://github.com/notdeathm/statusapi" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="/">Dashboard</a>
-              <a href="/api-docs">API Docs</a>
+              <Link href="/">Dashboard</Link>
+              <Link href="/api-docs">API Docs</Link>
             </div>
           </div>
         </div>
