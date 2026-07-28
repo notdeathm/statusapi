@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-07-28T03:33:29.065Z",
+  "timestamp": "2026-07-28T06:11:26.593Z",
   "version": "4.0",
   "services": [
     {
@@ -17,16 +17,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 294,
-        "timestamp": "2026-07-28T03:33:29.365Z",
-        "lastChecked": "2026-07-28T03:33:29.365Z",
+        "responseTime": 280,
+        "timestamp": "2026-07-28T06:11:26.877Z",
+        "lastChecked": "2026-07-28T06:11:26.877Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 294,
+          "responseTime": 280,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -49,8 +49,8 @@
         "status": "up",
         "statusCode": 200,
         "responseTime": 199,
-        "timestamp": "2026-07-28T03:33:29.576Z",
-        "lastChecked": "2026-07-28T03:33:29.576Z",
+        "timestamp": "2026-07-28T06:11:27.084Z",
+        "lastChecked": "2026-07-28T06:11:27.084Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
@@ -79,16 +79,16 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 187,
-        "timestamp": "2026-07-28T03:33:29.763Z",
-        "lastChecked": "2026-07-28T03:33:29.763Z",
+        "responseTime": 159,
+        "timestamp": "2026-07-28T06:11:27.243Z",
+        "lastChecked": "2026-07-28T06:11:27.243Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 187,
+          "responseTime": 159,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -108,8 +108,8 @@
       "down": 0,
       "maintenance": 0
     },
-    "averageResponseTime": 227,
-    "lastChecked": "2026-07-28T03:33:29.065Z",
+    "averageResponseTime": 213,
+    "lastChecked": "2026-07-28T06:11:26.593Z",
     "servicesHealthy": 3
   }
 }
