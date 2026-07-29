@@ -289,10 +289,10 @@
     {
       "date": "2026-07-29",
       "status": "up",
-      "responseTime": 431,
-      "avgResponseTime": 431,
-      "upCount": 1,
-      "totalCount": 1,
+      "responseTime": 346,
+      "avgResponseTime": 389,
+      "upCount": 2,
+      "totalCount": 2,
       "incidents": 0,
       "uptime": 100
     }
@@ -587,10 +587,10 @@
     {
       "date": "2026-07-29",
       "status": "up",
-      "responseTime": 211,
-      "avgResponseTime": 211,
-      "upCount": 1,
-      "totalCount": 1,
+      "responseTime": 294,
+      "avgResponseTime": 253,
+      "upCount": 2,
+      "totalCount": 2,
       "incidents": 0,
       "uptime": 100
     }
@@ -885,10 +885,10 @@
     {
       "date": "2026-07-29",
       "status": "up",
-      "responseTime": 172,
-      "avgResponseTime": 172,
-      "upCount": 1,
-      "totalCount": 1,
+      "responseTime": 261,
+      "avgResponseTime": 217,
+      "upCount": 2,
+      "totalCount": 2,
       "incidents": 0,
       "uptime": 100
     }
