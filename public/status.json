@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-07-29T19:53:38.381Z",
+  "timestamp": "2026-07-29T20:42:06.424Z",
   "version": "4.0",
   "services": [
     {
@@ -17,16 +17,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 338,
-        "timestamp": "2026-07-29T19:53:38.724Z",
-        "lastChecked": "2026-07-29T19:53:38.724Z",
+        "responseTime": 332,
+        "timestamp": "2026-07-29T20:42:06.761Z",
+        "lastChecked": "2026-07-29T20:42:06.761Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 338,
+          "responseTime": 332,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -48,16 +48,16 @@
         "serviceId": "github-notdeath-repo",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 223,
-        "timestamp": "2026-07-29T19:53:38.955Z",
-        "lastChecked": "2026-07-29T19:53:38.955Z",
+        "responseTime": 200,
+        "timestamp": "2026-07-29T20:42:06.969Z",
+        "lastChecked": "2026-07-29T20:42:06.969Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 223,
+          "responseTime": 200,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -79,16 +79,16 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 338,
-        "timestamp": "2026-07-29T19:53:39.293Z",
-        "lastChecked": "2026-07-29T19:53:39.293Z",
+        "responseTime": 222,
+        "timestamp": "2026-07-29T20:42:07.191Z",
+        "lastChecked": "2026-07-29T20:42:07.191Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 338,
+          "responseTime": 222,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -108,8 +108,8 @@
       "down": 0,
       "maintenance": 0
     },
-    "averageResponseTime": 300,
-    "lastChecked": "2026-07-29T19:53:38.381Z",
+    "averageResponseTime": 251,
+    "lastChecked": "2026-07-29T20:42:06.424Z",
     "servicesHealthy": 3
   }
 }
