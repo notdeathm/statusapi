@@ -290,10 +290,10 @@
     {
       "date": "2026-07-30",
       "status": "up",
-      "responseTime": 328,
-      "avgResponseTime": 295,
-      "upCount": 7,
-      "totalCount": 7,
+      "responseTime": 379,
+      "avgResponseTime": 306,
+      "upCount": 8,
+      "totalCount": 8,
       "incidents": 0,
       "uptime": 100
     }
@@ -589,12 +589,12 @@
     {
       "date": "2026-07-30",
       "status": "down",
-      "responseTime": 68,
-      "avgResponseTime": 148,
+      "responseTime": 90,
+      "avgResponseTime": 141,
       "upCount": 3,
-      "totalCount": 7,
-      "incidents": 4,
-      "uptime": 43
+      "totalCount": 8,
+      "incidents": 5,
+      "uptime": 38
     }
   ],
   "status-api": [
@@ -888,10 +888,10 @@
     {
       "date": "2026-07-30",
       "status": "up",
-      "responseTime": 377,
-      "avgResponseTime": 229,
-      "upCount": 7,
-      "totalCount": 7,
+      "responseTime": 167,
+      "avgResponseTime": 221,
+      "upCount": 8,
+      "totalCount": 8,
       "incidents": 0,
       "uptime": 100
     }
