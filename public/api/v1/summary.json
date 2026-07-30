@@ -1,18 +1,18 @@
 {
   "success": true,
-  "timestamp": "2026-07-30T06:40:44.182Z",
+  "timestamp": "2026-07-30T09:18:11.236Z",
   "version": "4.0",
-  "status": "operational",
+  "status": "outage",
   "summary": {
     "countsByStatus": {
-      "up": 3,
+      "up": 2,
       "degraded": 0,
-      "down": 0,
+      "down": 1,
       "maintenance": 0
     },
-    "averageResponseTime": 174,
-    "servicesHealthy": 3,
+    "averageResponseTime": 272,
+    "servicesHealthy": 2,
     "totalServices": 3,
-    "uptimePercentage": 100
+    "uptimePercentage": 66.67
   }
 }
