@@ -7,9 +7,9 @@
       "status": "down",
       "statusCode": 404,
       "startTime": "2026-07-30T09:18:26.945Z",
-      "lastSeenDown": "2026-08-01T15:32:20.489Z",
+      "lastSeenDown": "2026-08-01T16:31:46.802Z",
       "error": null,
-      "errorReason": "Forbidden — access to this resource is denied (HTTP 403)."
+      "errorReason": "Page not found — the URL returned a 404 error."
     }
   },
   "closedIncidents": []
