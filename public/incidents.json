@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-08-04T11:40:56.285Z",
+  "timestamp": "2026-08-04T13:23:11.404Z",
   "openIncidents": [
     {
       "id": "github-notdeath-repo-1785403106945",
@@ -9,9 +9,9 @@
       "status": "down",
       "statusCode": 404,
       "startTime": "2026-07-30T09:18:26.945Z",
-      "lastSeenDown": "2026-08-04T11:41:11.695Z",
+      "lastSeenDown": "2026-08-04T13:23:26.932Z",
       "error": null,
-      "errorReason": "Forbidden — access to this resource is denied (HTTP 403)."
+      "errorReason": "Page not found — the URL returned a 404 error."
     }
   ],
   "closedIncidents": [],
