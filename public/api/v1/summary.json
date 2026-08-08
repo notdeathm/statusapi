@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-08-08T20:34:05.662Z",
+  "timestamp": "2026-08-08T21:02:00.946Z",
   "version": "4.0",
   "status": "outage",
   "summary": {
@@ -10,7 +10,7 @@
       "down": 1,
       "maintenance": 0
     },
-    "averageResponseTime": 91,
+    "averageResponseTime": 211,
     "servicesHealthy": 2,
     "totalServices": 3,
     "uptimePercentage": 66.67
