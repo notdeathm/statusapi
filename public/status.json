@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-08-15T16:54:00.595Z",
+  "timestamp": "2026-08-15T17:12:10.553Z",
   "version": "4.0",
   "services": [
     {
@@ -17,16 +17,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 291,
-        "timestamp": "2026-08-15T16:54:00.889Z",
-        "lastChecked": "2026-08-15T16:54:00.889Z",
+        "responseTime": 258,
+        "timestamp": "2026-08-15T17:12:10.815Z",
+        "lastChecked": "2026-08-15T17:12:10.815Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 291,
+          "responseTime": 258,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -48,22 +48,22 @@
         "serviceId": "github-notdeath-repo",
         "status": "down",
         "statusCode": 404,
-        "responseTime": 179,
-        "timestamp": "2026-08-15T16:54:16.313Z",
-        "lastChecked": "2026-08-15T16:54:16.313Z",
+        "responseTime": 162,
+        "timestamp": "2026-08-15T17:12:26.234Z",
+        "lastChecked": "2026-08-15T17:12:26.234Z",
         "uptime": 0,
         "error": null,
         "errorReason": "Page not found — the URL returned a 404 error.",
         "probe": {
           "ok": true,
           "statusCode": 404,
-          "responseTime": 179,
+          "responseTime": 162,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
         }
       },
-      "uptime30d": 88.51
+      "uptime30d": 88.48
     },
     {
       "service": {
@@ -79,16 +79,16 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 367,
-        "timestamp": "2026-08-15T16:54:16.680Z",
-        "lastChecked": "2026-08-15T16:54:16.680Z",
+        "responseTime": 215,
+        "timestamp": "2026-08-15T17:12:26.449Z",
+        "lastChecked": "2026-08-15T17:12:26.449Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 367,
+          "responseTime": 215,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -108,8 +108,8 @@
       "down": 1,
       "maintenance": 0
     },
-    "averageResponseTime": 279,
-    "lastChecked": "2026-08-15T16:54:00.595Z",
+    "averageResponseTime": 212,
+    "lastChecked": "2026-08-15T17:12:10.553Z",
     "servicesHealthy": 2
   }
 }
