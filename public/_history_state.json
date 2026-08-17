@@ -293,10 +293,10 @@
     {
       "date": "2026-08-17",
       "status": "up",
-      "responseTime": 164,
-      "avgResponseTime": 283,
-      "upCount": 35,
-      "totalCount": 35,
+      "responseTime": 216,
+      "avgResponseTime": 281,
+      "upCount": 36,
+      "totalCount": 36,
       "incidents": 0,
       "uptime": 100
     }
@@ -595,11 +595,11 @@
     {
       "date": "2026-08-17",
       "status": "down",
-      "responseTime": 20,
-      "avgResponseTime": 612,
+      "responseTime": 63,
+      "avgResponseTime": 597,
       "upCount": 0,
-      "totalCount": 35,
-      "incidents": 35,
+      "totalCount": 36,
+      "incidents": 36,
       "uptime": 0
     }
   ],
@@ -897,10 +897,10 @@
     {
       "date": "2026-08-17",
       "status": "up",
-      "responseTime": 99,
-      "avgResponseTime": 191,
-      "upCount": 35,
-      "totalCount": 35,
+      "responseTime": 105,
+      "avgResponseTime": 189,
+      "upCount": 36,
+      "totalCount": 36,
       "incidents": 0,
       "uptime": 100
     }
