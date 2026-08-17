@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-08-17T14:25:38.976Z",
+  "timestamp": "2026-08-17T15:12:15.561Z",
   "openIncidents": [
     {
       "id": "github-notdeath-repo-1785403106945",
@@ -9,9 +9,9 @@
       "status": "down",
       "statusCode": 404,
       "startTime": "2026-07-30T09:18:26.945Z",
-      "lastSeenDown": "2026-08-17T14:26:02.523Z",
+      "lastSeenDown": "2026-08-17T15:12:50.831Z",
       "error": null,
-      "errorReason": "Page not found — the URL returned a 404 error."
+      "errorReason": "Connection timed out — the server did not respond within the timeout window."
     }
   ],
   "closedIncidents": [],
