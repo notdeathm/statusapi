@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-08-22T15:30:42.149Z",
+  "timestamp": "2026-08-22T15:49:20.196Z",
   "services": [
     {
       "serviceId": "notdeath-website",
@@ -300,10 +300,10 @@
         {
           "date": "2026-08-22",
           "status": "up",
-          "responseTime": 273,
-          "avgResponseTime": 319,
-          "upCount": 31,
-          "totalCount": 31,
+          "responseTime": 440,
+          "avgResponseTime": 323,
+          "upCount": 32,
+          "totalCount": 32,
           "incidents": 0,
           "uptime": 100
         }
@@ -312,7 +312,7 @@
     {
       "serviceId": "github-notdeath-repo",
       "serviceName": "GitHub Repository",
-      "overallUptime30d": 55.32,
+      "overallUptime30d": 55.29,
       "history": [
         {
           "date": "2026-07-20",
@@ -607,11 +607,11 @@
         {
           "date": "2026-08-22",
           "status": "down",
-          "responseTime": 66,
-          "avgResponseTime": 67,
+          "responseTime": 142,
+          "avgResponseTime": 69,
           "upCount": 0,
-          "totalCount": 31,
-          "incidents": 31,
+          "totalCount": 32,
+          "incidents": 32,
           "uptime": 0
         }
       ]
@@ -914,10 +914,10 @@
         {
           "date": "2026-08-22",
           "status": "up",
-          "responseTime": 108,
+          "responseTime": 146,
           "avgResponseTime": 162,
-          "upCount": 31,
-          "totalCount": 31,
+          "upCount": 32,
+          "totalCount": 32,
           "incidents": 0,
           "uptime": 100
         }
