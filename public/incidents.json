@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-08-23T09:55:33.499Z",
+  "timestamp": "2026-08-23T10:17:44.880Z",
   "openIncidents": [
     {
       "id": "github-notdeath-repo-1785403106945",
@@ -9,7 +9,7 @@
       "status": "down",
       "statusCode": 404,
       "startTime": "2026-07-30T09:18:26.945Z",
-      "lastSeenDown": "2026-08-23T09:55:48.972Z",
+      "lastSeenDown": "2026-08-23T10:18:00.625Z",
       "error": null,
       "errorReason": "Page not found — the URL returned a 404 error."
     }
