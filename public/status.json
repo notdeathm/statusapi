@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-08-23T19:45:51.345Z",
+  "timestamp": "2026-08-23T19:59:12.988Z",
   "version": "4.0",
   "services": [
     {
@@ -17,16 +17,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 151,
-        "timestamp": "2026-08-23T19:45:51.501Z",
-        "lastChecked": "2026-08-23T19:45:51.501Z",
+        "responseTime": 319,
+        "timestamp": "2026-08-23T19:59:13.312Z",
+        "lastChecked": "2026-08-23T19:59:13.312Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 151,
+          "responseTime": 319,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -49,8 +49,8 @@
         "status": "down",
         "statusCode": 404,
         "responseTime": 18,
-        "timestamp": "2026-08-23T19:46:06.626Z",
-        "lastChecked": "2026-08-23T19:46:06.626Z",
+        "timestamp": "2026-08-23T19:59:28.429Z",
+        "lastChecked": "2026-08-23T19:59:28.429Z",
         "uptime": 0,
         "error": null,
         "errorReason": "Page not found — the URL returned a 404 error.",
@@ -63,7 +63,7 @@
           "matchedExpectedText": null
         }
       },
-      "uptime30d": 44.07
+      "uptime30d": 44.04
     },
     {
       "service": {
@@ -79,16 +79,16 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 77,
-        "timestamp": "2026-08-23T19:46:06.703Z",
-        "lastChecked": "2026-08-23T19:46:06.703Z",
+        "responseTime": 63,
+        "timestamp": "2026-08-23T19:59:28.492Z",
+        "lastChecked": "2026-08-23T19:59:28.492Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 77,
+          "responseTime": 63,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -108,8 +108,8 @@
       "down": 1,
       "maintenance": 0
     },
-    "averageResponseTime": 82,
-    "lastChecked": "2026-08-23T19:45:51.345Z",
+    "averageResponseTime": 133,
+    "lastChecked": "2026-08-23T19:59:12.988Z",
     "servicesHealthy": 2
   }
 }
