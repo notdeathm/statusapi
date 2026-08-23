@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-08-22T23:51:37.819Z",
+  "timestamp": "2026-08-23T00:25:51.089Z",
   "version": "4.0",
   "services": [
     {
@@ -17,16 +17,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 273,
-        "timestamp": "2026-08-22T23:51:38.098Z",
-        "lastChecked": "2026-08-22T23:51:38.098Z",
+        "responseTime": 219,
+        "timestamp": "2026-08-23T00:25:51.313Z",
+        "lastChecked": "2026-08-23T00:25:51.313Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 273,
+          "responseTime": 219,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -47,23 +47,23 @@
       "currentStatus": {
         "serviceId": "github-notdeath-repo",
         "status": "down",
-        "statusCode": 403,
-        "responseTime": 26,
-        "timestamp": "2026-08-22T23:51:53.173Z",
-        "lastChecked": "2026-08-22T23:51:53.173Z",
+        "statusCode": 404,
+        "responseTime": 20,
+        "timestamp": "2026-08-23T00:26:06.423Z",
+        "lastChecked": "2026-08-23T00:26:06.423Z",
         "uptime": 0,
         "error": null,
-        "errorReason": "Forbidden — access to this resource is denied (HTTP 403).",
+        "errorReason": "Page not found — the URL returned a 404 error.",
         "probe": {
           "ok": true,
-          "statusCode": 403,
-          "responseTime": 26,
+          "statusCode": 404,
+          "responseTime": 20,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
         }
       },
-      "uptime30d": 54.45
+      "uptime30d": 45.43
     },
     {
       "service": {
@@ -79,16 +79,16 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 251,
-        "timestamp": "2026-08-22T23:51:53.424Z",
-        "lastChecked": "2026-08-22T23:51:53.424Z",
+        "responseTime": 89,
+        "timestamp": "2026-08-23T00:26:06.512Z",
+        "lastChecked": "2026-08-23T00:26:06.512Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 251,
+          "responseTime": 89,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -108,8 +108,8 @@
       "down": 1,
       "maintenance": 0
     },
-    "averageResponseTime": 183,
-    "lastChecked": "2026-08-22T23:51:37.819Z",
+    "averageResponseTime": 109,
+    "lastChecked": "2026-08-23T00:25:51.089Z",
     "servicesHealthy": 2
   }
 }
