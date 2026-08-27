@@ -1,22 +1,12 @@
 {
   "success": true,
-  "timestamp": "2026-08-26T22:50:25.245Z",
+  "timestamp": "2026-08-27T04:05:46.889Z",
   "services": [
     {
       "serviceId": "notdeath-website",
       "serviceName": "NotDeath Website",
       "overallUptime30d": 100,
       "history": [
-        {
-          "date": "2026-07-28",
-          "status": "up",
-          "responseTime": 285,
-          "avgResponseTime": 317,
-          "upCount": 14,
-          "totalCount": 14,
-          "incidents": 0,
-          "uptime": 100
-        },
         {
           "date": "2026-07-29",
           "status": "up",
@@ -306,24 +296,24 @@
           "totalCount": 24,
           "incidents": 0,
           "uptime": 100
+        },
+        {
+          "date": "2026-08-27",
+          "status": "up",
+          "responseTime": 198,
+          "avgResponseTime": 198,
+          "upCount": 1,
+          "totalCount": 1,
+          "incidents": 0,
+          "uptime": 100
         }
       ]
     },
     {
       "serviceId": "github-notdeath-repo",
       "serviceName": "GitHub Repository",
-      "overallUptime30d": 3.55,
+      "overallUptime30d": 1.98,
       "history": [
-        {
-          "date": "2026-07-28",
-          "status": "up",
-          "responseTime": 245,
-          "avgResponseTime": 233,
-          "upCount": 14,
-          "totalCount": 14,
-          "incidents": 0,
-          "uptime": 100
-        },
         {
           "date": "2026-07-29",
           "status": "up",
@@ -613,6 +603,16 @@
           "totalCount": 24,
           "incidents": 24,
           "uptime": 0
+        },
+        {
+          "date": "2026-08-27",
+          "status": "down",
+          "responseTime": 18,
+          "avgResponseTime": 18,
+          "upCount": 0,
+          "totalCount": 1,
+          "incidents": 1,
+          "uptime": 0
         }
       ]
     },
@@ -621,16 +621,6 @@
       "serviceName": "Status API",
       "overallUptime30d": 100,
       "history": [
-        {
-          "date": "2026-07-28",
-          "status": "up",
-          "responseTime": 200,
-          "avgResponseTime": 230,
-          "upCount": 14,
-          "totalCount": 14,
-          "incidents": 0,
-          "uptime": 100
-        },
         {
           "date": "2026-07-29",
           "status": "up",
@@ -918,6 +908,16 @@
           "avgResponseTime": 173,
           "upCount": 24,
           "totalCount": 24,
+          "incidents": 0,
+          "uptime": 100
+        },
+        {
+          "date": "2026-08-27",
+          "status": "up",
+          "responseTime": 75,
+          "avgResponseTime": 75,
+          "upCount": 1,
+          "totalCount": 1,
           "incidents": 0,
           "uptime": 100
         }
