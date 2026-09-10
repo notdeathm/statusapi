@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-09-10T05:52:42.636Z",
+  "timestamp": "2026-09-10T10:07:26.652Z",
   "version": "4.0",
   "services": [
     {
@@ -17,16 +17,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 297,
-        "timestamp": "2026-09-10T05:52:42.938Z",
-        "lastChecked": "2026-09-10T05:52:42.938Z",
+        "responseTime": 188,
+        "timestamp": "2026-09-10T10:07:26.846Z",
+        "lastChecked": "2026-09-10T10:07:26.846Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 297,
+          "responseTime": 188,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -48,16 +48,16 @@
         "serviceId": "github-notdeath-repo",
         "status": "down",
         "statusCode": 404,
-        "responseTime": 16,
-        "timestamp": "2026-09-10T05:52:58.051Z",
-        "lastChecked": "2026-09-10T05:52:58.051Z",
+        "responseTime": 20,
+        "timestamp": "2026-09-10T10:07:41.994Z",
+        "lastChecked": "2026-09-10T10:07:41.994Z",
         "uptime": 0,
         "error": null,
         "errorReason": "Page not found — the URL returned a 404 error.",
         "probe": {
           "ok": true,
           "statusCode": 404,
-          "responseTime": 16,
+          "responseTime": 20,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -80,8 +80,8 @@
         "status": "up",
         "statusCode": 200,
         "responseTime": 76,
-        "timestamp": "2026-09-10T05:52:58.128Z",
-        "lastChecked": "2026-09-10T05:52:58.128Z",
+        "timestamp": "2026-09-10T10:07:42.070Z",
+        "lastChecked": "2026-09-10T10:07:42.070Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
@@ -108,8 +108,8 @@
       "down": 1,
       "maintenance": 0
     },
-    "averageResponseTime": 130,
-    "lastChecked": "2026-09-10T05:52:42.636Z",
+    "averageResponseTime": 95,
+    "lastChecked": "2026-09-10T10:07:26.652Z",
     "servicesHealthy": 2
   }
 }
