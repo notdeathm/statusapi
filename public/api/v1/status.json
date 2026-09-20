@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-09-20T19:46:56.821Z",
+  "timestamp": "2026-09-20T21:54:40.097Z",
   "version": "4.0",
   "services": [
     {
@@ -17,16 +17,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 259,
-        "timestamp": "2026-09-20T19:46:57.083Z",
-        "lastChecked": "2026-09-20T19:46:57.083Z",
+        "responseTime": 234,
+        "timestamp": "2026-09-20T21:54:40.336Z",
+        "lastChecked": "2026-09-20T21:54:40.336Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 259,
+          "responseTime": 234,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -48,16 +48,16 @@
         "serviceId": "github-notdeath-repo",
         "status": "down",
         "statusCode": 404,
-        "responseTime": 67,
-        "timestamp": "2026-09-20T19:47:12.306Z",
-        "lastChecked": "2026-09-20T19:47:12.306Z",
+        "responseTime": 18,
+        "timestamp": "2026-09-20T21:54:55.463Z",
+        "lastChecked": "2026-09-20T21:54:55.463Z",
         "uptime": 0,
         "error": null,
         "errorReason": "Page not found — the URL returned a 404 error.",
         "probe": {
           "ok": true,
           "statusCode": 404,
-          "responseTime": 67,
+          "responseTime": 18,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -79,16 +79,16 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 259,
-        "timestamp": "2026-09-20T19:47:12.565Z",
-        "lastChecked": "2026-09-20T19:47:12.565Z",
+        "responseTime": 98,
+        "timestamp": "2026-09-20T21:54:55.561Z",
+        "lastChecked": "2026-09-20T21:54:55.561Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 259,
+          "responseTime": 98,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -108,8 +108,8 @@
       "down": 1,
       "maintenance": 0
     },
-    "averageResponseTime": 195,
-    "lastChecked": "2026-09-20T19:46:56.821Z",
+    "averageResponseTime": 117,
+    "lastChecked": "2026-09-20T21:54:40.097Z",
     "servicesHealthy": 2
   }
 }
