@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-09-27T00:52:06.781Z",
+  "timestamp": "2026-09-27T05:53:47.757Z",
   "version": "4.0",
   "services": [
     {
@@ -17,16 +17,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 370,
-        "timestamp": "2026-09-27T00:52:07.155Z",
-        "lastChecked": "2026-09-27T00:52:07.155Z",
+        "responseTime": 268,
+        "timestamp": "2026-09-27T05:53:48.030Z",
+        "lastChecked": "2026-09-27T05:53:48.030Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 370,
+          "responseTime": 268,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -48,16 +48,16 @@
         "serviceId": "github-notdeath-repo",
         "status": "down",
         "statusCode": 404,
-        "responseTime": 141,
-        "timestamp": "2026-09-27T00:52:22.505Z",
-        "lastChecked": "2026-09-27T00:52:22.505Z",
+        "responseTime": 16,
+        "timestamp": "2026-09-27T05:54:03.131Z",
+        "lastChecked": "2026-09-27T05:54:03.131Z",
         "uptime": 0,
         "error": null,
         "errorReason": "Page not found — the URL returned a 404 error.",
         "probe": {
           "ok": true,
           "statusCode": 404,
-          "responseTime": 141,
+          "responseTime": 16,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -79,16 +79,16 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 253,
-        "timestamp": "2026-09-27T00:52:22.758Z",
-        "lastChecked": "2026-09-27T00:52:22.758Z",
+        "responseTime": 75,
+        "timestamp": "2026-09-27T05:54:03.207Z",
+        "lastChecked": "2026-09-27T05:54:03.207Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 253,
+          "responseTime": 75,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -108,8 +108,8 @@
       "down": 1,
       "maintenance": 0
     },
-    "averageResponseTime": 255,
-    "lastChecked": "2026-09-27T00:52:06.781Z",
+    "averageResponseTime": 120,
+    "lastChecked": "2026-09-27T05:53:47.757Z",
     "servicesHealthy": 2
   }
 }
