@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-10-04T13:23:02.722Z",
+  "timestamp": "2026-10-04T17:42:11.303Z",
   "version": "4.0",
   "services": [
     {
@@ -17,16 +17,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 427,
-        "timestamp": "2026-10-04T13:23:03.153Z",
-        "lastChecked": "2026-10-04T13:23:03.153Z",
+        "responseTime": 261,
+        "timestamp": "2026-10-04T17:42:11.567Z",
+        "lastChecked": "2026-10-04T17:42:11.567Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 427,
+          "responseTime": 261,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -49,8 +49,8 @@
         "status": "down",
         "statusCode": 404,
         "responseTime": 162,
-        "timestamp": "2026-10-04T13:23:18.545Z",
-        "lastChecked": "2026-10-04T13:23:18.545Z",
+        "timestamp": "2026-10-04T17:42:26.903Z",
+        "lastChecked": "2026-10-04T17:42:26.903Z",
         "uptime": 0,
         "error": null,
         "errorReason": "Page not found — the URL returned a 404 error.",
@@ -79,16 +79,16 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 620,
-        "timestamp": "2026-10-04T13:23:19.166Z",
-        "lastChecked": "2026-10-04T13:23:19.166Z",
+        "responseTime": 199,
+        "timestamp": "2026-10-04T17:42:27.102Z",
+        "lastChecked": "2026-10-04T17:42:27.102Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 620,
+          "responseTime": 199,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -108,8 +108,8 @@
       "down": 1,
       "maintenance": 0
     },
-    "averageResponseTime": 403,
-    "lastChecked": "2026-10-04T13:23:02.722Z",
+    "averageResponseTime": 207,
+    "lastChecked": "2026-10-04T17:42:11.303Z",
     "servicesHealthy": 2
   }
 }
