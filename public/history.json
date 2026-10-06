@@ -1,10 +1,10 @@
 {
   "success": true,
-  "timestamp": "2026-10-06T13:29:23.039Z",
+  "timestamp": "2026-10-06T19:00:11.011Z",
   "services": [
     {
       "serviceId": "notdeath-website",
-      "serviceName": "NotDeath Website",
+      "serviceName": "NotDeath Portfolio",
       "overallUptime30d": 100,
       "history": [
         {
@@ -300,325 +300,18 @@
         {
           "date": "2026-10-06",
           "status": "up",
-          "responseTime": 315,
-          "avgResponseTime": 276,
-          "upCount": 3,
-          "totalCount": 3,
+          "responseTime": 313,
+          "avgResponseTime": 285,
+          "upCount": 4,
+          "totalCount": 4,
           "incidents": 0,
           "uptime": 100
         }
       ]
     },
     {
-      "serviceId": "github-notdeath-repo",
-      "serviceName": "GitHub Repository",
-      "overallUptime30d": 0,
-      "history": [
-        {
-          "date": "2026-09-07",
-          "status": "down",
-          "responseTime": 72,
-          "avgResponseTime": 83,
-          "upCount": 0,
-          "totalCount": 6,
-          "incidents": 6,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-08",
-          "status": "down",
-          "responseTime": 109,
-          "avgResponseTime": 82,
-          "upCount": 0,
-          "totalCount": 7,
-          "incidents": 7,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-09",
-          "status": "down",
-          "responseTime": 234,
-          "avgResponseTime": 124,
-          "upCount": 0,
-          "totalCount": 7,
-          "incidents": 7,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-10",
-          "status": "down",
-          "responseTime": 73,
-          "avgResponseTime": 58,
-          "upCount": 0,
-          "totalCount": 7,
-          "incidents": 7,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-11",
-          "status": "down",
-          "responseTime": 147,
-          "avgResponseTime": 67,
-          "upCount": 0,
-          "totalCount": 8,
-          "incidents": 8,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-12",
-          "status": "down",
-          "responseTime": 168,
-          "avgResponseTime": 89,
-          "upCount": 0,
-          "totalCount": 8,
-          "incidents": 8,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-13",
-          "status": "down",
-          "responseTime": 29,
-          "avgResponseTime": 95,
-          "upCount": 0,
-          "totalCount": 8,
-          "incidents": 8,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-14",
-          "status": "down",
-          "responseTime": 63,
-          "avgResponseTime": 105,
-          "upCount": 0,
-          "totalCount": 5,
-          "incidents": 5,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-15",
-          "status": "down",
-          "responseTime": 88,
-          "avgResponseTime": 47,
-          "upCount": 0,
-          "totalCount": 7,
-          "incidents": 7,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-16",
-          "status": "down",
-          "responseTime": 145,
-          "avgResponseTime": 68,
-          "upCount": 0,
-          "totalCount": 6,
-          "incidents": 6,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-17",
-          "status": "down",
-          "responseTime": 59,
-          "avgResponseTime": 83,
-          "upCount": 0,
-          "totalCount": 7,
-          "incidents": 7,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-18",
-          "status": "down",
-          "responseTime": 96,
-          "avgResponseTime": 69,
-          "upCount": 0,
-          "totalCount": 7,
-          "incidents": 7,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-19",
-          "status": "down",
-          "responseTime": 28,
-          "avgResponseTime": 121,
-          "upCount": 0,
-          "totalCount": 8,
-          "incidents": 8,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-20",
-          "status": "down",
-          "responseTime": 60,
-          "avgResponseTime": 70,
-          "upCount": 0,
-          "totalCount": 8,
-          "incidents": 8,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-21",
-          "status": "down",
-          "responseTime": 82,
-          "avgResponseTime": 112,
-          "upCount": 0,
-          "totalCount": 5,
-          "incidents": 5,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-22",
-          "status": "down",
-          "responseTime": 17,
-          "avgResponseTime": 75,
-          "upCount": 0,
-          "totalCount": 6,
-          "incidents": 6,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-23",
-          "status": "down",
-          "responseTime": 138,
-          "avgResponseTime": 87,
-          "upCount": 0,
-          "totalCount": 7,
-          "incidents": 7,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-24",
-          "status": "down",
-          "responseTime": 203,
-          "avgResponseTime": 110,
-          "upCount": 0,
-          "totalCount": 6,
-          "incidents": 6,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-25",
-          "status": "down",
-          "responseTime": 61,
-          "avgResponseTime": 60,
-          "upCount": 0,
-          "totalCount": 5,
-          "incidents": 5,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-26",
-          "status": "down",
-          "responseTime": 19,
-          "avgResponseTime": 76,
-          "upCount": 0,
-          "totalCount": 7,
-          "incidents": 7,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-27",
-          "status": "down",
-          "responseTime": 60,
-          "avgResponseTime": 54,
-          "upCount": 0,
-          "totalCount": 6,
-          "incidents": 6,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-28",
-          "status": "down",
-          "responseTime": 28,
-          "avgResponseTime": 36,
-          "upCount": 0,
-          "totalCount": 4,
-          "incidents": 4,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-29",
-          "status": "down",
-          "responseTime": 72,
-          "avgResponseTime": 55,
-          "upCount": 0,
-          "totalCount": 5,
-          "incidents": 5,
-          "uptime": 0
-        },
-        {
-          "date": "2026-09-30",
-          "status": "down",
-          "responseTime": 161,
-          "avgResponseTime": 100,
-          "upCount": 0,
-          "totalCount": 5,
-          "incidents": 5,
-          "uptime": 0
-        },
-        {
-          "date": "2026-10-01",
-          "status": "down",
-          "responseTime": 61,
-          "avgResponseTime": 119,
-          "upCount": 0,
-          "totalCount": 5,
-          "incidents": 5,
-          "uptime": 0
-        },
-        {
-          "date": "2026-10-02",
-          "status": "down",
-          "responseTime": 95,
-          "avgResponseTime": 66,
-          "upCount": 0,
-          "totalCount": 5,
-          "incidents": 5,
-          "uptime": 0
-        },
-        {
-          "date": "2026-10-03",
-          "status": "down",
-          "responseTime": 41,
-          "avgResponseTime": 124,
-          "upCount": 0,
-          "totalCount": 6,
-          "incidents": 6,
-          "uptime": 0
-        },
-        {
-          "date": "2026-10-04",
-          "status": "down",
-          "responseTime": 236,
-          "avgResponseTime": 118,
-          "upCount": 0,
-          "totalCount": 6,
-          "incidents": 6,
-          "uptime": 0
-        },
-        {
-          "date": "2026-10-05",
-          "status": "down",
-          "responseTime": 110,
-          "avgResponseTime": 99,
-          "upCount": 0,
-          "totalCount": 3,
-          "incidents": 3,
-          "uptime": 0
-        },
-        {
-          "date": "2026-10-06",
-          "status": "down",
-          "responseTime": 101,
-          "avgResponseTime": 97,
-          "upCount": 0,
-          "totalCount": 3,
-          "incidents": 3,
-          "uptime": 0
-        }
-      ]
-    },
-    {
       "serviceId": "status-api",
-      "serviceName": "Status API",
+      "serviceName": "StatusAPI",
       "overallUptime30d": 100,
       "history": [
         {
@@ -914,10 +607,10 @@
         {
           "date": "2026-10-06",
           "status": "up",
-          "responseTime": 166,
-          "avgResponseTime": 191,
-          "upCount": 3,
-          "totalCount": 3,
+          "responseTime": 128,
+          "avgResponseTime": 175,
+          "upCount": 4,
+          "totalCount": 4,
           "incidents": 0,
           "uptime": 100
         }
