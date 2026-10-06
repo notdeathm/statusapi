@@ -5,7 +5,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import IncidentTimeline from "@/components/IncidentTimeline";
 import type { IncidentsData, StatusData } from "@/types";
-import { getJsonUrl, timeAgo, formatIncidentDuration } from "@/lib/config";
+import { getJsonUrl, formatIncidentDuration } from "@/lib/config";
 
 type FilterType = "all" | "open" | "resolved";
 
@@ -24,8 +24,11 @@ export default function IncidentsPage() {
         fetch(getJsonUrl("incidents.json")),
         fetch(getJsonUrl("status.json")),
       ]);
-      if (incRes.ok) setIncidents(await incRes.json());
-      if (statusRes.ok) setStatus(await statusRes.json());
+      if (!incRes.ok || !statusRes.ok) {
+        throw new Error(`Unable to load monitoring data (HTTP ${!incRes.ok ? incRes.status : statusRes.status})`);
+      }
+      setIncidents(await incRes.json());
+      setStatus(await statusRes.json());
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : "Failed to load incidents");
     } finally {
@@ -64,7 +67,7 @@ export default function IncidentsPage() {
 
   return (
     <>
-      <Nav overallStatus={overallStatus as any} />
+      <Nav overallStatus={overallStatus} />
       <div className="incidents-page">
         <div className="container">
 

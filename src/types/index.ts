@@ -5,6 +5,7 @@ export interface Service {
   name: string;
   description?: string;
   url: string;
+  repository?: string;
   type: ServiceType;
   // Only for github type
   owner?: string;

@@ -77,22 +77,22 @@ const ENDPOINTS = [
     tryUrl: `${BASE_URL}/status.json`,
     response: `{
   "success": true,
-  "timestamp": "2026-07-22T18:00:00.000Z",
-  "version": "3.0",
-  "totalServices": 3,
+  "timestamp": "2026-10-06T12:00:00.000Z",
+  "version": "4.0",
+  "totalServices": 2,
   "allOperational": true,
   "anyDown": false,
   "anyDegraded": false,
   "summary": {
-    "countsByStatus": { "up": 3, "degraded": 0, "down": 0 },
+    "countsByStatus": { "up": 2, "degraded": 0, "down": 0 },
     "averageResponseTime": 145,
-    "lastChecked": "2026-07-22T18:00:00.000Z"
+    "lastChecked": "2026-10-06T12:00:00.000Z"
   },
   "services": [
     {
       "service": {
         "id": "notdeath-website",
-        "name": "NotDeath Website",
+        "name": "NotDeath Portfolio",
         "url": "https://notdeathm.is-a.dev",
         "type": "http"
       },
@@ -100,7 +100,7 @@ const ENDPOINTS = [
         "status": "up",
         "statusCode": 200,
         "responseTime": 142,
-        "lastChecked": "2026-07-22T18:00:00.000Z",
+        "lastChecked": "2026-10-06T12:00:00.000Z",
         "error": null
       },
       "uptime30d": 99.98
@@ -133,15 +133,15 @@ const ENDPOINTS = [
     tryUrl: `${BASE_URL}/history.json`,
     response: `{
   "success": true,
-  "timestamp": "2026-07-22T18:00:00.000Z",
+  "timestamp": "2026-10-06T12:00:00.000Z",
   "services": [
     {
       "serviceId": "notdeath-website",
-      "serviceName": "NotDeath Website",
+      "serviceName": "NotDeath Portfolio",
       "overallUptime30d": 99.98,
       "history": [
         {
-          "date": "2026-07-01",
+          "date": "2026-10-05",
           "status": "up",
           "responseTime": 142,
           "avgResponseTime": 138,
@@ -158,7 +158,7 @@ const ENDPOINTS = [
       ["services[].serviceId", "string", "Unique identifier for the service"],
       ["services[].overallUptime30d", "number (%)", "30-day uptime percentage"],
       ["history[].date", "string (YYYY-MM-DD)", "The date of this history entry"],
-      ["history[].status", "enum", "Final status of the day: \"up\" | \"down\" | \"degraded\""],
+      ["history[].status", "enum", "Worst status observed during the day: \"up\" | \"down\" | \"degraded\""],
       ["history[].avgResponseTime", "number (ms)", "Rolling average response time for the day"],
       ["history[].uptime", "number (%)", "Uptime percentage for that day (0–100)"],
       ["history[].upCount", "number", "Number of successful checks that day"],
@@ -175,18 +175,18 @@ const ENDPOINTS = [
     tryUrl: `${BASE_URL}/incidents.json`,
     response: `{
   "success": true,
-  "timestamp": "2026-07-22T18:00:00.000Z",
+  "timestamp": "2026-10-06T12:00:00.000Z",
   "totalIncidents": 2,
   "openIncidents": [],
   "closedIncidents": [
     {
       "id": "notdeath-website-1719000000000",
       "serviceId": "notdeath-website",
-      "serviceName": "NotDeath Website",
+      "serviceName": "NotDeath Portfolio",
       "status": "down",
       "statusCode": 503,
-      "startTime": "2026-07-01T12:00:00.000Z",
-      "resolvedTime": "2026-07-01T12:45:00.000Z",
+      "startTime": "2026-10-05T12:00:00.000Z",
+      "resolvedTime": "2026-10-05T12:45:00.000Z",
       "durationMs": 2700000,
       "resolvedStatus": "up",
       "error": null
@@ -215,14 +215,14 @@ const ENDPOINTS = [
     tryUrl: `${BASE_URL}/api/v1/summary.json`,
     response: `{
   "success": true,
-  "timestamp": "2026-07-22T18:00:00.000Z",
-  "version": "3.0",
+  "timestamp": "2026-10-06T12:00:00.000Z",
+  "version": "4.0",
   "status": "operational",
   "summary": {
-    "countsByStatus": { "up": 3, "degraded": 0, "down": 0 },
+    "countsByStatus": { "up": 2, "degraded": 0, "down": 0 },
     "averageResponseTime": 145,
-    "servicesHealthy": 3,
-    "totalServices": 3,
+    "servicesHealthy": 2,
+    "totalServices": 2,
     "uptimePercentage": 100
   }
 }`,
@@ -238,10 +238,25 @@ const ENDPOINTS = [
     method: "GET",
     path: "/api/v1/status.json",
     title: "Full Status (v1)",
-    desc: "Same as the root status.json but under a stable versioned path. Use this for long-lived integrations to avoid breaking changes.",
+    desc: "Same schema as the root status endpoint under a stable, versioned path for long-lived integrations.",
     tryUrl: `${BASE_URL}/api/v1/status.json`,
     response: `// Same schema as /status.json
-// See "Current Status" endpoint above for full response shape.`,
+// See "Current Status" above for the full response shape.`,
+    fields: [],
+  },
+  {
+    id: "openapi",
+    method: "GET",
+    path: "/api/v1/openapi.json",
+    title: "OpenAPI 3.1 Specification",
+    desc: "Machine-readable API definition for documentation generators, clients, and API testing tools.",
+    tryUrl: `${BASE_URL}/api/v1/openapi.json`,
+    response: `{
+  "openapi": "3.1.0",
+  "info": { "title": "StatusAPI", "version": "4.0.0" },
+  "servers": [{ "url": "${BASE_URL}" }],
+  "paths": { "...": "..." }
+}`,
     fields: [],
   },
 ];
@@ -293,6 +308,7 @@ const SECTIONS = [
   { id: "incidents", label: "  Incidents" },
   { id: "summary", label: "  Summary (v1)" },
   { id: "status-v1", label: "  Full Status (v1)" },
+  { id: "openapi", label: "  OpenAPI 3.1" },
   { id: "examples", label: "Examples" },
   { id: "status-codes", label: "Status Values" },
 ];
@@ -377,7 +393,7 @@ export default function ApiDocsPage() {
                 <h2 className="api-section-title">Rate Limits</h2>
                 <p className="api-section-desc">
                   Since all data is served as static JSON files via GitHub Pages CDN, there are no
-                  custom rate limits enforced by this API. However, please be mindful of GitHub's
+                  custom rate limits enforced by this API. However, please be mindful of GitHub&apos;s
                   standard limits and avoid hammering the endpoints unnecessarily.
                 </p>
                 <div style={{ overflowX: "auto" }}>
@@ -398,7 +414,7 @@ export default function ApiDocsPage() {
                       <tr>
                         <td>Recommended poll interval</td>
                         <td style={{ color: "var(--accent-light)", fontFamily: "var(--mono)" }}>≥ 60 seconds</td>
-                        <td>Data won't change more often than 5 min</td>
+                        <td>Data won&apos;t normally change more often than every 5 min</td>
                       </tr>
                       <tr>
                         <td>Protocol</td>

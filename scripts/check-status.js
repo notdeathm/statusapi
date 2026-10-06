@@ -103,11 +103,12 @@ async function fetchUrl(url, timeout = 10000) {
     };
   } catch (e) {
     const isTimeout = e.name === "AbortError";
+    const cause = e.cause?.code || e.cause?.message;
     return {
       ok: false,
       statusCode: null,
       ms: isTimeout ? timeout : Date.now() - start,
-      error: isTimeout ? "timeout" : e.message,
+      error: isTimeout ? "timeout" : (cause || e.message),
       body: "",
     };
   }
@@ -275,6 +276,8 @@ function updateHistory(state, serviceId, checkResult) {
       responseTime: checkResult.responseTime ?? null,
       avgResponseTime: checkResult.responseTime ?? null,
       upCount: 0,
+      degradedCount: 0,
+      downCount: 0,
       totalCount: 0,
       incidents: 0,
     };
@@ -282,11 +285,23 @@ function updateHistory(state, serviceId, checkResult) {
   }
 
   existing.totalCount += 1;
-  const isUp = checkResult.status === "up" || checkResult.status === "degraded";
-  if (isUp) existing.upCount += 1;
-  else existing.incidents += 1;
+  const isAvailable = checkResult.status === "up" || checkResult.status === "degraded";
+  if (isAvailable) existing.upCount += 1;
+  if (checkResult.status === "degraded") {
+    existing.degradedCount = (existing.degradedCount ?? 0) + 1;
+  }
+  if (checkResult.status === "down") {
+    existing.downCount = (existing.downCount ?? existing.incidents ?? 0) + 1;
+    existing.incidents += 1;
+  }
 
-  existing.status = checkResult.status;
+  // A daily bar summarizes every probe, not merely the final probe of the day:
+  // red if any outage occurred, yellow if any probe was degraded, green otherwise.
+  existing.status = (existing.downCount ?? existing.incidents ?? 0) > 0
+    ? "down"
+    : (existing.degradedCount ?? 0) > 0
+      ? "degraded"
+      : "up";
   existing.responseTime = checkResult.responseTime ?? existing.responseTime;
 
   // Proper rolling average response time
@@ -378,6 +393,13 @@ async function main() {
   const histState = loadHistoryState();
   const incState = loadIncidentState();
   const now = new Date().toISOString();
+
+  // Configuration is authoritative. Do not keep an incident open forever for
+  // a service that was removed or renamed in services.json.
+  const configuredIds = new Set(services.map((service) => service.id));
+  for (const serviceId of Object.keys(incState.openIncidents)) {
+    if (!configuredIds.has(serviceId)) delete incState.openIncidents[serviceId];
+  }
 
   console.log(`\n[${now}] Checking ${services.length} services…`);
   console.log("─".repeat(50));
