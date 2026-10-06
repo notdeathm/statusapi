@@ -4,7 +4,7 @@ A professional, high-performance, **serverless** status page for monitoring your
 
 [![Check Status](https://github.com/notdeathm/statusapi/actions/workflows/check-status.yml/badge.svg)](https://github.com/notdeathm/statusapi/actions/workflows/check-status.yml)
 [![Deployment](https://github.com/notdeathm/statusapi/actions/workflows/deploy.yml/badge.svg)](https://github.com/notdeathm/statusapi/actions/workflows/deploy.yml)
-[![Uptime](https://img.shields.io/endpoint?url=https://notdeathm.github.io/statusapi/status.json&style=flat-square&label=uptime)](https://notdeathm.github.io/statusapi/)
+[![Uptime](https://img.shields.io/endpoint?url=https://notdeathm.is-a.dev/statusapi/status.json&style=flat-square&label=uptime)](https://notdeathm.is-a.dev/statusapi/)
 
 ---
 

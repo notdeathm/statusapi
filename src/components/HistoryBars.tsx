@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import type { HistoryEntry, StatusValue } from "@/types";
 import { formatResponseTime } from "@/lib/config";
 
@@ -25,8 +24,6 @@ function getStatusLabel(status: StatusValue | "unknown"): string {
 }
 
 export default function HistoryBars({ history, days = 30 }: Props) {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   // Build array of bars from newest → oldest (left to right = oldest first)
   const bars: {
     status: StatusValue | "unknown";
@@ -65,8 +62,6 @@ export default function HistoryBars({ history, days = 30 }: Props) {
           <div
             key={i}
             className="history-bar-wrapper"
-            onMouseEnter={() => setHoveredIndex(i)}
-            onMouseLeave={() => setHoveredIndex(null)}
             role="listitem"
           >
             <div

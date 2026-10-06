@@ -50,7 +50,7 @@ jobs:
             ${{ steps.checks.outputs.failing_services }}
 
             Dashboard:
-            https://notdeathm.github.io/statusapi/
+            https://notdeathm.is-a.dev/statusapi/
           to: notdeath@duck.com
           from: Status API Bot <${{ secrets.MAIL_USERNAME }}>
 
@@ -70,7 +70,7 @@ jobs:
                 "fields": [
                   {
                     "name": "Dashboard",
-                    "value": "https://notdeathm.github.io/statusapi/",
+                    "value": "https://notdeathm.is-a.dev/statusapi/",
                     "inline": false
                   }
                 ],
@@ -94,7 +94,7 @@ jobs:
                 "fields": [
                   {
                     "name": "Dashboard",
-                    "value": "https://notdeathm.github.io/statusapi/",
+                    "value": "https://notdeathm.is-a.dev/statusapi/",
                     "inline": false
                   }
                 ],

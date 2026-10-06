@@ -80,6 +80,7 @@ export default function DashboardPage() {
   });
   const [refreshing, setRefreshing] = useState(false);
   const [countdown, setCountdown] = useState(60);
+  const [currentTime, setCurrentTime] = useState(0);
   const [filter, setFilter] = useState<FilterType>("all");
 
   const fetchData = useCallback(async (silent = false) => {
@@ -125,7 +126,9 @@ export default function DashboardPage() {
   useEffect(() => {
     fetchData();
     const refreshInterval = setInterval(() => fetchData(true), 60_000);
+    setCurrentTime(Date.now());
     const countdownInterval = setInterval(() => {
+      setCurrentTime(Date.now());
       setCountdown((prev) => (prev > 0 ? prev - 1 : 60));
     }, 1000);
     return () => {
@@ -177,6 +180,8 @@ export default function DashboardPage() {
   const openIncidents = incidents?.openIncidents?.length ?? 0;
   const totalIncidents = incidents?.totalIncidents ?? 0;
   const avgResponseTime = status ? getAvgResponseTime(status.services) : null;
+  const dataAgeMs = status ? currentTime - new Date(status.timestamp).getTime() : 0;
+  const isDataStale = Boolean(status && (!Number.isFinite(dataAgeMs) || dataAgeMs > 30 * 60_000));
 
   const filteredServices = status?.services?.filter((svc) => {
     if (filter === "all") return true;
@@ -289,7 +294,7 @@ export default function DashboardPage() {
                     <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1.2" />
                     <path d="M6 3.5V6l1.5 1.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
                   </svg>
-                  Updated {timeAgo(lastRefresh)}
+                  Data checked {status ? timeAgo(status.timestamp) : timeAgo(lastRefresh)}
                 </span>
               )}
               <span className="hero-meta-chip">
@@ -373,6 +378,20 @@ export default function DashboardPage() {
               </button>
             </div>
           </div>
+
+          {/* Never present old monitoring data as live. */}
+          {isDataStale && (
+            <div className="error-state" role="alert">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              Monitoring data is stale. The last successful check was {timeAgo(status!.timestamp)};
+              current service states may have changed.
+            </div>
+          )}
 
           {/* ── ERROR ────────────────────────────────── */}
           {error && (

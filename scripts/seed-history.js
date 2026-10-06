@@ -39,7 +39,7 @@ const RT_RANGES = {
 };
 
 // Simulate realistic uptime with occasional blips
-function generateDayStatus(seed) {
+function generateDayStatus() {
   const rand = Math.random();
   // ~95% chance of being fully operational
   if (rand > 0.05) return "up";

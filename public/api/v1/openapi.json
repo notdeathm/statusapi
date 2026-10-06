@@ -1,0 +1,58 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "StatusAPI",
+    "version": "4.0.0",
+    "description": "Public, read-only uptime and incident data for NotDeath web services."
+  },
+  "servers": [{ "url": "https://notdeathm.is-a.dev/statusapi" }],
+  "paths": {
+    "/api/v1/status.json": {
+      "get": {
+        "summary": "Get full current status",
+        "operationId": "getStatus",
+        "responses": { "200": { "description": "Current service status", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/StatusResponse" } } } } }
+      }
+    },
+    "/api/v1/summary.json": {
+      "get": {
+        "summary": "Get compact health summary",
+        "operationId": "getSummary",
+        "responses": { "200": { "description": "Compact system summary", "content": { "application/json": { "schema": { "type": "object" } } } } }
+      }
+    },
+    "/history.json": {
+      "get": {
+        "summary": "Get rolling 30-day history",
+        "operationId": "getHistory",
+        "responses": { "200": { "description": "Daily uptime history", "content": { "application/json": { "schema": { "type": "object" } } } } }
+      }
+    },
+    "/incidents.json": {
+      "get": {
+        "summary": "Get open and resolved incidents",
+        "operationId": "getIncidents",
+        "responses": { "200": { "description": "Incident timeline", "content": { "application/json": { "schema": { "type": "object" } } } } }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "StatusResponse": {
+        "type": "object",
+        "required": ["success", "timestamp", "version", "services", "totalServices", "allOperational"],
+        "properties": {
+          "success": { "type": "boolean" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "version": { "type": "string" },
+          "totalServices": { "type": "integer", "minimum": 0 },
+          "allOperational": { "type": "boolean" },
+          "anyDown": { "type": "boolean" },
+          "anyDegraded": { "type": "boolean" },
+          "services": { "type": "array", "items": { "type": "object" } },
+          "summary": { "type": "object" }
+        }
+      }
+    }
+  }
+}

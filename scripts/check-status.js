@@ -103,11 +103,12 @@ async function fetchUrl(url, timeout = 10000) {
     };
   } catch (e) {
     const isTimeout = e.name === "AbortError";
+    const cause = e.cause?.code || e.cause?.message;
     return {
       ok: false,
       statusCode: null,
       ms: isTimeout ? timeout : Date.now() - start,
-      error: isTimeout ? "timeout" : e.message,
+      error: isTimeout ? "timeout" : (cause || e.message),
       body: "",
     };
   }
