@@ -2,30 +2,25 @@
   "services": [
     {
       "id": "notdeath-website",
-      "name": "NotDeath Website",
-      "description": "Personal portfolio website",
-      "url": "https://notdeathm.is-a.dev",
+      "name": "NotDeath Portfolio",
+      "description": "Aviation-inspired personal portfolio showcasing projects, skills, and development experience.",
+      "url": "https://notdeathm.is-a.dev/",
+      "repository": "https://github.com/notdeathm/notdeathm.github.io",
       "type": "http",
+      "expectedStatusCode": 200,
       "checkInterval": 300,
-      "timeout": 5000
-    },
-    {
-      "id": "github-notdeath-repo",
-      "name": "GitHub Repository",
-      "description": "Main notdeath repository",
-      "url": "https://github.com/notdeathm/notdeath",
-      "type": "github",
-      "owner": "notdeathm",
-      "repo": "notdeath"
+      "timeout": 10000
     },
     {
       "id": "status-api",
-      "name": "Status API",
-      "description": "This status page website",
-      "url": "https://notdeathm.github.io/statusapi/",
+      "name": "StatusAPI",
+      "description": "Public status dashboard and JSON API for monitoring NotDeath services.",
+      "url": "https://notdeathm.is-a.dev/statusapi/",
+      "repository": "https://github.com/notdeathm/statusapi",
       "type": "http",
+      "expectedStatusCode": 200,
       "checkInterval": 300,
-      "timeout": 5000
+      "timeout": 10000
     }
   ]
 }
