@@ -1,22 +1,12 @@
 {
   "success": true,
-  "timestamp": "2026-10-09T21:43:12.884Z",
+  "timestamp": "2026-10-10T01:16:59.958Z",
   "services": [
     {
       "serviceId": "notdeath-website",
       "serviceName": "NotDeath Portfolio",
       "overallUptime30d": 100,
       "history": [
-        {
-          "date": "2026-09-10",
-          "status": "up",
-          "responseTime": 218,
-          "avgResponseTime": 233,
-          "upCount": 7,
-          "totalCount": 7,
-          "incidents": 0,
-          "uptime": 100
-        },
         {
           "date": "2026-09-11",
           "status": "up",
@@ -312,6 +302,18 @@
           "totalCount": 4,
           "incidents": 0,
           "uptime": 100
+        },
+        {
+          "date": "2026-10-10",
+          "status": "up",
+          "responseTime": 252,
+          "avgResponseTime": 252,
+          "upCount": 1,
+          "degradedCount": 0,
+          "downCount": 0,
+          "totalCount": 1,
+          "incidents": 0,
+          "uptime": 100
         }
       ]
     },
@@ -320,16 +322,6 @@
       "serviceName": "StatusAPI",
       "overallUptime30d": 100,
       "history": [
-        {
-          "date": "2026-09-10",
-          "status": "up",
-          "responseTime": 142,
-          "avgResponseTime": 124,
-          "upCount": 7,
-          "totalCount": 7,
-          "incidents": 0,
-          "uptime": 100
-        },
         {
           "date": "2026-09-11",
           "status": "up",
@@ -623,6 +615,18 @@
           "degradedCount": 0,
           "downCount": 0,
           "totalCount": 4,
+          "incidents": 0,
+          "uptime": 100
+        },
+        {
+          "date": "2026-10-10",
+          "status": "up",
+          "responseTime": 79,
+          "avgResponseTime": 79,
+          "upCount": 1,
+          "degradedCount": 0,
+          "downCount": 0,
+          "totalCount": 1,
           "incidents": 0,
           "uptime": 100
         }
