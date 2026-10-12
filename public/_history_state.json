@@ -1,16 +1,6 @@
 {
   "notdeath-website": [
     {
-      "date": "2026-09-12",
-      "status": "up",
-      "responseTime": 305,
-      "avgResponseTime": 258,
-      "upCount": 8,
-      "totalCount": 8,
-      "incidents": 0,
-      "uptime": 100
-    },
-    {
       "date": "2026-09-13",
       "status": "up",
       "responseTime": 284,
@@ -307,6 +297,18 @@
       "degradedCount": 0,
       "downCount": 0,
       "totalCount": 5,
+      "incidents": 0,
+      "uptime": 100
+    },
+    {
+      "date": "2026-10-12",
+      "status": "up",
+      "responseTime": 326,
+      "avgResponseTime": 326,
+      "upCount": 1,
+      "degradedCount": 0,
+      "downCount": 0,
+      "totalCount": 1,
       "incidents": 0,
       "uptime": 100
     }
@@ -615,16 +617,6 @@
   ],
   "status-api": [
     {
-      "date": "2026-09-12",
-      "status": "up",
-      "responseTime": 394,
-      "avgResponseTime": 189,
-      "upCount": 8,
-      "totalCount": 8,
-      "incidents": 0,
-      "uptime": 100
-    },
-    {
       "date": "2026-09-13",
       "status": "up",
       "responseTime": 222,
@@ -921,6 +913,18 @@
       "degradedCount": 0,
       "downCount": 0,
       "totalCount": 5,
+      "incidents": 0,
+      "uptime": 100
+    },
+    {
+      "date": "2026-10-12",
+      "status": "up",
+      "responseTime": 117,
+      "avgResponseTime": 117,
+      "upCount": 1,
+      "degradedCount": 0,
+      "downCount": 0,
+      "totalCount": 1,
       "incidents": 0,
       "uptime": 100
     }
