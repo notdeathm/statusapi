@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-10-19T13:00:11.725Z",
+  "timestamp": "2026-10-19T19:12:13.868Z",
   "version": "4.0",
   "services": [
     {
@@ -19,16 +19,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 327,
-        "timestamp": "2026-10-19T13:00:12.057Z",
-        "lastChecked": "2026-10-19T13:00:12.057Z",
+        "responseTime": 283,
+        "timestamp": "2026-10-19T19:12:14.155Z",
+        "lastChecked": "2026-10-19T19:12:14.155Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 327,
+          "responseTime": 283,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -53,8 +53,8 @@
         "status": "up",
         "statusCode": 200,
         "responseTime": 112,
-        "timestamp": "2026-10-19T13:00:12.177Z",
-        "lastChecked": "2026-10-19T13:00:12.177Z",
+        "timestamp": "2026-10-19T19:12:14.274Z",
+        "lastChecked": "2026-10-19T19:12:14.274Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
@@ -81,8 +81,8 @@
       "down": 0,
       "maintenance": 0
     },
-    "averageResponseTime": 220,
-    "lastChecked": "2026-10-19T13:00:11.725Z",
+    "averageResponseTime": 198,
+    "lastChecked": "2026-10-19T19:12:13.868Z",
     "servicesHealthy": 2
   }
 }
