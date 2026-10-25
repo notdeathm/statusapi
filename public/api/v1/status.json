@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-10-25T12:05:06.485Z",
+  "timestamp": "2026-10-25T16:04:28.255Z",
   "version": "4.0",
   "services": [
     {
@@ -19,16 +19,16 @@
         "serviceId": "notdeath-website",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 231,
-        "timestamp": "2026-10-25T12:05:06.721Z",
-        "lastChecked": "2026-10-25T12:05:06.721Z",
+        "responseTime": 303,
+        "timestamp": "2026-10-25T16:04:28.563Z",
+        "lastChecked": "2026-10-25T16:04:28.563Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 231,
+          "responseTime": 303,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -52,16 +52,16 @@
         "serviceId": "status-api",
         "status": "up",
         "statusCode": 200,
-        "responseTime": 116,
-        "timestamp": "2026-10-25T12:05:06.844Z",
-        "lastChecked": "2026-10-25T12:05:06.844Z",
+        "responseTime": 110,
+        "timestamp": "2026-10-25T16:04:28.680Z",
+        "lastChecked": "2026-10-25T16:04:28.680Z",
         "uptime": 100,
         "error": null,
         "errorReason": null,
         "probe": {
           "ok": true,
           "statusCode": 200,
-          "responseTime": 116,
+          "responseTime": 110,
           "attempts": 1,
           "error": null,
           "matchedExpectedText": null
@@ -81,8 +81,8 @@
       "down": 0,
       "maintenance": 0
     },
-    "averageResponseTime": 174,
-    "lastChecked": "2026-10-25T12:05:06.485Z",
+    "averageResponseTime": 207,
+    "lastChecked": "2026-10-25T16:04:28.255Z",
     "servicesHealthy": 2
   }
 }
