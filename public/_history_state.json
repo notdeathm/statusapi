@@ -349,12 +349,12 @@
     {
       "date": "2026-11-04",
       "status": "up",
-      "responseTime": 125,
-      "avgResponseTime": 158,
-      "upCount": 2,
+      "responseTime": 303,
+      "avgResponseTime": 206,
+      "upCount": 3,
       "degradedCount": 0,
       "downCount": 0,
-      "totalCount": 2,
+      "totalCount": 3,
       "incidents": 0,
       "uptime": 100
     }
@@ -1011,12 +1011,12 @@
     {
       "date": "2026-11-04",
       "status": "up",
-      "responseTime": 34,
-      "avgResponseTime": 43,
-      "upCount": 2,
+      "responseTime": 126,
+      "avgResponseTime": 71,
+      "upCount": 3,
       "degradedCount": 0,
       "downCount": 0,
-      "totalCount": 2,
+      "totalCount": 3,
       "incidents": 0,
       "uptime": 100
     }
