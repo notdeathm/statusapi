@@ -1,18 +1,6 @@
 {
   "notdeath-website": [
     {
-      "date": "2026-10-15",
-      "status": "up",
-      "responseTime": 296,
-      "avgResponseTime": 336,
-      "upCount": 7,
-      "degradedCount": 0,
-      "downCount": 0,
-      "totalCount": 7,
-      "incidents": 0,
-      "uptime": 100
-    },
-    {
       "date": "2026-10-16",
       "status": "up",
       "responseTime": 609,
@@ -359,6 +347,18 @@
       "totalCount": 4,
       "incidents": 0,
       "uptime": 100
+    },
+    {
+      "date": "2026-11-14",
+      "status": "up",
+      "responseTime": 318,
+      "avgResponseTime": 318,
+      "upCount": 1,
+      "degradedCount": 0,
+      "downCount": 0,
+      "totalCount": 1,
+      "incidents": 0,
+      "uptime": 100
     }
   ],
   "github-notdeath-repo": [
@@ -664,18 +664,6 @@
     }
   ],
   "status-api": [
-    {
-      "date": "2026-10-15",
-      "status": "up",
-      "responseTime": 80,
-      "avgResponseTime": 201,
-      "upCount": 7,
-      "degradedCount": 0,
-      "downCount": 0,
-      "totalCount": 7,
-      "incidents": 0,
-      "uptime": 100
-    },
     {
       "date": "2026-10-16",
       "status": "up",
@@ -1021,6 +1009,18 @@
       "degradedCount": 0,
       "downCount": 0,
       "totalCount": 4,
+      "incidents": 0,
+      "uptime": 100
+    },
+    {
+      "date": "2026-11-14",
+      "status": "up",
+      "responseTime": 75,
+      "avgResponseTime": 75,
+      "upCount": 1,
+      "degradedCount": 0,
+      "downCount": 0,
+      "totalCount": 1,
       "incidents": 0,
       "uptime": 100
     }
