@@ -1,6 +1,6 @@
 {
   "success": true,
-  "timestamp": "2026-11-15T10:50:50.177Z",
+  "timestamp": "2026-11-15T17:27:29.818Z",
   "version": "4.0",
   "status": "operational",
   "summary": {
@@ -10,7 +10,7 @@
       "down": 0,
       "maintenance": 0
     },
-    "averageResponseTime": 207,
+    "averageResponseTime": 150,
     "servicesHealthy": 2,
     "totalServices": 2,
     "uptimePercentage": 100
