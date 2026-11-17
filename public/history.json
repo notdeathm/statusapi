@@ -1,24 +1,12 @@
 {
   "success": true,
-  "timestamp": "2026-11-16T18:51:28.978Z",
+  "timestamp": "2026-11-17T02:09:00.347Z",
   "services": [
     {
       "serviceId": "notdeath-website",
       "serviceName": "NotDeath Portfolio",
       "overallUptime30d": 100,
       "history": [
-        {
-          "date": "2026-10-18",
-          "status": "up",
-          "responseTime": 247,
-          "avgResponseTime": 260,
-          "upCount": 8,
-          "degradedCount": 0,
-          "downCount": 0,
-          "totalCount": 8,
-          "incidents": 0,
-          "uptime": 100
-        },
         {
           "date": "2026-10-19",
           "status": "up",
@@ -366,6 +354,18 @@
           "totalCount": 3,
           "incidents": 0,
           "uptime": 100
+        },
+        {
+          "date": "2026-11-17",
+          "status": "up",
+          "responseTime": 301,
+          "avgResponseTime": 301,
+          "upCount": 1,
+          "degradedCount": 0,
+          "downCount": 0,
+          "totalCount": 1,
+          "incidents": 0,
+          "uptime": 100
         }
       ]
     },
@@ -374,18 +374,6 @@
       "serviceName": "StatusAPI",
       "overallUptime30d": 100,
       "history": [
-        {
-          "date": "2026-10-18",
-          "status": "up",
-          "responseTime": 70,
-          "avgResponseTime": 109,
-          "upCount": 8,
-          "degradedCount": 0,
-          "downCount": 0,
-          "totalCount": 8,
-          "incidents": 0,
-          "uptime": 100
-        },
         {
           "date": "2026-10-19",
           "status": "up",
@@ -731,6 +719,18 @@
           "degradedCount": 0,
           "downCount": 0,
           "totalCount": 3,
+          "incidents": 0,
+          "uptime": 100
+        },
+        {
+          "date": "2026-11-17",
+          "status": "up",
+          "responseTime": 121,
+          "avgResponseTime": 121,
+          "upCount": 1,
+          "degradedCount": 0,
+          "downCount": 0,
+          "totalCount": 1,
           "incidents": 0,
           "uptime": 100
         }
